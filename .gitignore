@@ -1,0 +1,14 @@
+/WebClassroomManagement/node_modules
+/WebClassroomManagement/public/hot
+/WebClassroomManagement/public/storage
+/WebClassroomManagement/storage/*.key
+/WebClassroomManagement/vendor
+/WebClassroomManagement/.idea
+/WebClassroomManagement/.vscode
+/WebClassroomManagement/.vagrant
+/WebClassroomManagement/Homestead.json
+/WebClassroomManagement/Homestead.yaml
+/WebClassroomManagement/npm-debug.log
+/WebClassroomManagement/yarn-error.log
+/WebClassroomManagement/.env
+/classroom-management-kmitl/test
