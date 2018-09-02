@@ -39,3 +39,13 @@ participant Member identified by memberId {
   o String memberId
   o Address address
 }
+
+asset CoinAdmin identified by adminId {
+  o String adminId
+  o Integer money
+}
+
+asset CoinMember identified by memberId {
+  o String memberId
+  o Integer money
+}
