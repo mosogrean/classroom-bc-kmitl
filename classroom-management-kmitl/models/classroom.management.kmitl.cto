@@ -18,25 +18,24 @@
 
 namespace classroom.management.kmitl
 
-participant SampleParticipant identified by participantId {
-  o String participantId
-  o String firstName
-  o String lastName
+concept Address {
+  o String Tel
+  o String email
 }
 
-asset SampleAsset identified by assetId {
-  o String assetId
-  --> SampleParticipant owner
-  o String value
+concept University {
+  o String University
+  o String Address
+  o String Tel
 }
 
-transaction SampleTransaction {
-  --> SampleAsset asset
-  o String newValue
+participant Admin identified by adminId {
+  o String adminId
+  o Address address
+  o University university
 }
 
-event SampleEvent {
-  --> SampleAsset asset
-  o String oldValue
-  o String newValue
+participant Member identified by memberId {
+  o String memberId
+  o Address address
 }
