@@ -18,26 +18,68 @@
  */
 
 /**
- * Sample transaction
- * @param {classroom.management.kmitl.SampleTransaction} sampleTransaction
+ * Coin transaction
+ * @param {classroom.management.kmitl.CreateTrans} CreateTrans
  * @transaction
  */
-async function sampleTransaction(tx) {
-    // Save the old value of the asset.
-    const oldValue = tx.asset.value;
 
-    // Update the asset with the new value.
-    tx.asset.value = tx.newValue;
+async function CreateTrans(request) {
+    const factory = getFactory();
+    const namespace = 'classroom.management.kmitl';
+    
+    if (request.fromAdmin.getIdentifier() != "" && request.toAdmin.getIdentifier()) {
+        console.log(request.fromAdmin.adminId);
+        console.log(request.fromWallet.money);
+        const oldFromMoney = request.fromWallet.money;
+        console.log(request.toAdmin.adminId);
+        console.log(request.toWallet.money);
+        const oldToMoney = request.toWallet.money
+        console.log(request.money);
 
-    // Get the asset registry for the asset.
-    const assetRegistry = await getAssetRegistry('classroom.management.kmitl.SampleAsset');
-    // Update the asset in the asset registry.
-    await assetRegistry.update(tx.asset);
+        if (request.money <= request.fromWallet.money) {
+            const CoinAdminFrom = request.fromWallet;
+            CoinAdminFrom.money = request.fromWallet.money - request.money;
+            const assetRegistry = await getAssetRegistry(namespace + '.CoinAdmin');
+            await assetRegistry.update(CoinAdminFrom);
 
-    // Emit an event for the modified asset.
-    let event = getFactory().newEvent('classroom.management.kmitl', 'SampleEvent');
-    event.asset = tx.asset;
-    event.oldValue = oldValue;
-    event.newValue = tx.newValue;
-    emit(event);
+            const CoinAdminTo = request.toWallet;
+            CoinAdminTo.money = request.toWallet.money + request.money;
+            const assetRegistry2 = await getAssetRegistry(namespace + '.CoinAdmin');
+            await assetRegistry2.update(CoinAdminTo);
+
+            const CreateTransEvent = factory.newEvent(namespace, 'CreateTransEvent');
+            CreateTransEvent.from = request.fromAdmin.adminId;
+            CreateTransEvent.to = request.toAdmin.adminId;
+            CreateTransEvent.oldFromMoney = oldFromMoney;
+            CreateTransEvent.newFromMoney = CoinAdminFrom.money;
+            CreateTransEvent.oldToMoney = oldToMoney ;
+            CreateTransEvent.newToMoney = CoinAdminTo.money;
+            emit(CreateTransEvent);
+
+        } else {
+            throw Error ("You can't update the transaction");
+        }
+
+        // const CoinAdmin 
+
+
+        // const OrderStatus = updateOrderRequest.saleOrder;
+        // OrderStatus.orderStatus = "HEADOFFICE_COMMITED";
+        // const assetRegistry2 = await getAssetRegistry(namespace + '.SaleOrder');
+        // await assetRegistry2.update(OrderStatus);
+
+
+        // const PackingProcess = factory.newResource(namespace, 'PackingProcess', oldHeadOfficeProcess.orderId);
+        // PackingProcess.productDetail = oldHeadOfficeProcess.productDetail;
+        // PackingProcess.packingTeamStatus = 'HEADOFFICE_CREATE_ORDER';
+        // PackingProcess.packingTeam = factory.newRelationship(namespace, 'PackingTeam', updateOrderRequest.packingTeam.getIdentifier());
+        // const assetRegistry = await getAssetRegistry(PackingProcess.getFullyQualifiedType());
+        // await assetRegistry.add(PackingProcess);
+
+        
+        
+    }
+    // console.log(request.fromAdmin.getIdentifier());
+    
+
 }

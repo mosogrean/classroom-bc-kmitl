@@ -51,16 +51,18 @@ asset CoinMember identified by memberId {
 }
 
 transaction CreateTrans {
-  --> Admin fromAdmin optional
-  --> Admin toAdmin optional
-  --> Member fromMember optional
-  --> Member toMember optional
+  --> Admin fromAdmin
+  --> CoinAdmin fromWallet
+  --> Admin toAdmin 
+  --> CoinAdmin toWallet
   o Integer money
 }
 
 event CreateTransEvent {
   o String from
   o String to
-  o Integer oldMoney
-  o Integer newMoney
+  o Integer oldFromMoney
+  o Integer newFromMoney
+  o Integer oldToMoney
+  o Integer newToMoney
 }
