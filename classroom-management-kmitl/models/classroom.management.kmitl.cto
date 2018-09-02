@@ -49,3 +49,18 @@ asset CoinMember identified by memberId {
   o String memberId
   o Integer money
 }
+
+transaction CreateTrans {
+  --> Admin fromAdmin optional
+  --> Admin toAdmin optional
+  --> Member fromMember optional
+  --> Member toMember optional
+  o Integer money
+}
+
+event CreateTransEvent {
+  o String from
+  o String to
+  o Integer oldMoney
+  o Integer newMoney
+}
