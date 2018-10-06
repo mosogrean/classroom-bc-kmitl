@@ -41,3 +41,28 @@ participant Students identified by studentId {
   o String position
   o String email
 }
+
+asset TeacherRoom identified by roomId {
+  o String roomId
+  --> Teachers teacher optional  
+  o String token optional
+  o String timestamp
+  o String transectionId
+}
+
+asset StudentRoom identified by roomId {
+  o String roomId
+  --> Students student optional  
+  o String token optional
+  o String timestamp
+  o String transectionId  
+}
+
+asset TSRoom identified by roomId {
+  o String roomId
+  --> Teachers teacher optional
+  --> Students student optional
+  o String token optional
+  o String timestamp
+  o String transectionId
+}
