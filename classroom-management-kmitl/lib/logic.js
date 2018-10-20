@@ -19,25 +19,35 @@
 
 /**
  * Sample transaction
- * @param {classroom.management.kmitl.SampleTransaction} sampleTransaction
+ * @param {classroom.management.kmitl.TeacherSubmitTeacherRoom} teacherSubmitTeacherRoom
  * @transaction
  */
-async function sampleTransaction(tx) {
-    // Save the old value of the asset.
-    const oldValue = tx.asset.value;
+async function teacherSubmitTeacherRoom(request) {
+    
+    const factory = getFactory();
+    const namespace = 'classroom.management.kmitl';
 
-    // Update the asset with the new value.
-    tx.asset.value = tx.newValue;
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
 
-    // Get the asset registry for the asset.
-    const assetRegistry = await getAssetRegistry('classroom.management.kmitl.SampleAsset');
-    // Update the asset in the asset registry.
-    await assetRegistry.update(tx.asset);
 
-    // Emit an event for the modified asset.
-    let event = getFactory().newEvent('classroom.management.kmitl', 'SampleEvent');
-    event.asset = tx.asset;
-    event.oldValue = oldValue;
-    event.newValue = tx.newValue;
-    emit(event);
+    // Teacher can Submit TeacherSubmitTeacherRoom to update TeacherRoom
+    const teacherRoom = request.roomId;
+    teacherRoom.teacher = factory.newRelationship(namespace, 'Teachers', request.teacher.getIdentifier());
+    teacherRoom.token = request.token;
+    teacherRoom.timestamp = JSON.stringify(request.timestamp);
+    teacherRoom.transactionId = request.getIdentifier();
+    teacherRoom.transaction_p = transaction_p; 
+    const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
+    await assetRegistry.update(teacherRoom);
+
+    const teachers = request.teacher;
+    teachers.roomId = factory.newRelationship(namespace, 'TeacherRoom',request.roomId.getIdentifier());
+    const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
+    await participantRegistry.update(teachers);
+
 }
