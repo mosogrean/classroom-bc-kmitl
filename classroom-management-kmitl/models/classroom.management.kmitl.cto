@@ -32,7 +32,8 @@ participant Teachers identified by teacherId {
   o String tel
   o String position
   o String email
-  --> TeacherRoom roomId optional
+  --> TeacherRoom teacherRoom optional
+  --> TSRoom tsRoom optional
 }
 
 participant Students identified by studentId {
@@ -67,6 +68,7 @@ asset TSRoom identified by roomId {
   o String token optional
   o String timestamp optional
   o String transactionId optional
+  o String transaction_p optional
 }
 
 transaction TeacherSubmitTeacherRoom {
