@@ -82,3 +82,9 @@ transaction TeacherSubmitTSRoom {
   --> TSRoom roomId
   o String token
 }
+
+transaction StudentSubmitStudentRoom {
+  --> Students student
+  --> StudentRoom roomId
+  o String token
+}
