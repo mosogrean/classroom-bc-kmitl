@@ -42,8 +42,8 @@ participant Students identified by studentId {
   o String tel
   o String position
   o String email
-  -->StudentRoom studentRoom optional
-  -->TSRoom tsRoom optional
+  --> StudentRoom studentRoom optional
+  --> TSRoom tsRoom optional
 }
 
 asset TeacherRoom identified by roomId {
@@ -89,5 +89,11 @@ transaction TeacherSubmitTSRoom {
 transaction StudentSubmitStudentRoom {
   --> Students student
   --> StudentRoom roomId
+  o String token
+}
+
+transaction StudentSubmitTSRoom {
+  --> Students student
+  --> TSRoom roomId
   o String token
 }
