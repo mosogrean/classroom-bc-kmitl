@@ -108,3 +108,31 @@ async function studentSubmitStudentRoom(request){
     const participantRegistry = await getParticipantRegistry(namespace + '.Students');
     await participantRegistry.update(students);
 }
+/**
+ * @param {classroom.management.kmitl.StudentSubmitTSRoom} studentSubmitTSRoom
+ * @transaction
+ */
+async function studentSubmitTSRoom(request){
+    const factory = getFactory();
+    const namespace = 'classroom.management.kmitl';
+
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+    const tsRoom = request.roomId;
+    tsRoom.student = factory.newRelationship(namespace, 'Students' ,request.student.getIdentifier());
+    tsRoom.token = request.token;
+    tsRoom.timestamp = JSON.stringify(request.timestamp);
+    tsRoom.transactionId = request.getIdentifier();
+    tsRoom.transaction_p = transaction_p;
+    const assetRegistry = await getAssetRegistry(namespace + '.TSRoom');
+    await assetRegistry.update(tsRoom);
+
+    const students = request.student;
+    students.tsRoom = factory.newRelationship(namespace, 'TSRoom' ,request.roomId.getIdentifier());
+    const participantRegistry = await getParticipantRegistry(namespace + '.Students');
+    await participantRegistry.update(students);
+}

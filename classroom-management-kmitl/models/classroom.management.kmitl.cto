@@ -60,8 +60,8 @@ asset StudentRoom identified by roomId {
   --> Students student optional  
   o String token optional
   o String timestamp optional
-  o String transactionId  optional
-  o String transaction_p optional
+  o String transactionId optional
+  o String transaction_p optional 
 }
 
 asset TSRoom identified by roomId {
@@ -89,5 +89,11 @@ transaction TeacherSubmitTSRoom {
 transaction StudentSubmitStudentRoom {
   --> Students student
   --> StudentRoom roomId
+  o String token
+}
+
+transaction StudentSubmitTSRoom {
+  --> Students student
+  --> TSRoom roomId
   o String token
 }
