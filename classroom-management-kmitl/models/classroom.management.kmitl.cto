@@ -59,8 +59,9 @@ asset StudentRoom identified by roomId {
   o String roomId
   --> Students student optional  
   o String token optional
-  o String timestamp
-  o String transactionId  
+  o String timestamp optional
+  o String transactionId optional
+  o String transaction_p optional 
 }
 
 asset TSRoom identified by roomId {
