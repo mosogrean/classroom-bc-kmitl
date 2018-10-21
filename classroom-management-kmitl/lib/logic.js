@@ -107,3 +107,4 @@ async function studentSubmitStudentRoom(request){
     students.studentRoom = factory.newRelationship(namespace, 'StudentRoom' ,request.roomId.getIdentifier());
     const participantRegistry = await getParticipantRegistry(namespace + '.Students');
     await participantRegistry.update(students);
+}
