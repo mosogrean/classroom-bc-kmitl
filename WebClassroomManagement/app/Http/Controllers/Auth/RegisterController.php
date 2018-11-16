@@ -20,6 +20,32 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    protected function postAdmin()
+    {
+    $client = new \GuzzleHttp\Client(); 
+    $body = array('id' => $adminId,'name' => $name,'tel' => $tel,'position' => $position,'email' => $email);
+    $res = $client->request('POST','http://localhost:3000/api/Admins',  $body)->json();
+    echo $res->send();
+    echo "DONE!";
+    }
+
+    protected function postTeacher()
+    {
+    $client = new \GuzzleHttp\Client(); 
+    $body = array('id' => $teacherId,'name' => $name,'tel' => $tel,'position' => $position,'email' => $email);
+    $res = $client->request('POST','http://localhost:3000/api/Teachers', $body)->json();
+    echo $res->send();
+    echo "DONE!";
+    }
+
+    protected function postStudent()
+    {
+    $client = new \GuzzleHttp\Client(); 
+    $body = array('id' => $studentId,'name' => $name,'tel' => $tel,'position' => $position,'email' => $email);
+    $res = $client->request('POST','http://localhost:3000/api/Students', $body)->json();
+    echo $res->send();
+    echo "DONE!";
+    }
 
     use RegistersUsers;
 
@@ -49,7 +75,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'id' => 'required|integar|min:8|unique:users',
             'name' => 'required|string|max:255',
+            'tel' => 'required|integer|max:10',
+            'position'=> 'require|integer|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -64,9 +93,36 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'id' => $data['id'],
             'name' => $data['name'],
+            'tel' => $data['tel'],
+            'position' => $data['admin'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    /*protected function createTeacher(array $teacher)
+    {
+        return User::create([
+            'id' => $teacher['id'],
+            'name' => $teacher['name'],
+            'tel' => $teacher['tel'],
+            'position' => $teacher['position'],
+            'email' => $teacher['email'],
+            'password' => Hash::make($teacher['password']),
+        ]);
+    }
+
+    protected function createStudent(array $student)
+    {
+        return User::create([
+            'id' => $student['id'],
+            'name' => $student['name'],
+            'tel' => $student['tel'],
+            'position' => $student['position'],
+            'email' => $student['email'],
+            'password' => Hash::make($student['password']),
+        ]);
+    }*/
 }
