@@ -32,8 +32,7 @@ participant Teachers identified by teacherId {
   o String tel
   o String position
   o String email
-  --> TeacherRoom teacherRoom optional
-  --> TSRoom tsRoom optional
+  o String[] room
 }
 
 participant Students identified by studentId {
@@ -42,14 +41,13 @@ participant Students identified by studentId {
   o String tel
   o String position
   o String email
-  --> StudentRoom studentRoom optional
-  --> TSRoom tsRoom optional
+  o String[] room
 }
 
 asset TeacherRoom identified by roomId {
   o String roomId
-  --> Teachers teacher optional  
-  o String token optional
+  --> Teachers[] teacher optional
+  o String[] structure optional 
   o String timestamp optional
   o String transactionId optional
   o String transaction_p optional
@@ -75,9 +73,10 @@ asset TSRoom identified by roomId {
 }
 
 transaction TeacherSubmitTeacherRoom {
-  --> Teachers teacher
+  --> Teachers[] teacher
+  --> Teachers[] room
   --> TeacherRoom roomId
-  o String token
+  --> TeacherRoom[] structure
 }
 
 transaction TeacherSubmitTSRoom {

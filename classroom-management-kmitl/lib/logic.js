@@ -34,19 +34,24 @@ async function teacherSubmitTeacherRoom(request) {
         transaction_p = request.roomId.transactionId;
     }
 
-
+    
     // Teacher can Submit TeacherSubmitTeacherRoom to update TeacherRoom
     const teacherRoom = request.roomId;
     teacherRoom.teacher = factory.newRelationship(namespace, 'Teachers', request.teacher.getIdentifier());
-    teacherRoom.token = request.token;
+    teacherRoom.structure = [];
     teacherRoom.timestamp = JSON.stringify(request.timestamp);
+    teacherRoom.structure.push(request.teacherId.timestamp.transactionId);
     teacherRoom.transactionId = request.getIdentifier();
-    teacherRoom.transaction_p = transaction_p; 
+    teacherRoom.transaction_p = transaction_p;
+    if (JSON.stringify(request.timestamp) != teacherRoom.timestamp ){
+        for(i=0;i<teachers.lenght;i++)
     const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
     await assetRegistry.update(teacherRoom);
 
     const teachers = request.teacher;
     teachers.teacherRoom = factory.newRelationship(namespace, 'TeacherRoom',request.roomId.getIdentifier());
+    teachers.room = [];
+    teachers.room.push(request.roomId.timestamp.transactionId);
     const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
     await participantRegistry.update(teachers);
     
