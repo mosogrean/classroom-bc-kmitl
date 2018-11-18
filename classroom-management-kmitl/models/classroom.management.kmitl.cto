@@ -1,98 +1,112 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// /*
+//  * Licensed under the Apache License, Version 2.0 (the "License");
+//  * you may not use this file except in compliance with the License.
+//  * You may obtain a copy of the License at
+//  *
+//  * http://www.apache.org/licenses/LICENSE-2.0
+//  *
+//  * Unless required by applicable law or agreed to in writing, software
+//  * distributed under the License is distributed on an "AS IS" BASIS,
+//  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  * See the License for the specific language governing permissions and
+//  * limitations under the License.
+//  */
 
-/**
- * Write your model definitions here
- */
+// /**
+//  * Write your model definitions here
+//  */
 
-namespace classroom.management.kmitl
+// namespace classroom.management.kmitl
 
-participant Admins identified by adminId {
-  o String adminId
-  o String name
-  o String tel
-  o String position
-  o String email
-}
+// participant Admins identified by adminId {
+//   o String adminId
+//   o String name
+//   o String tel
+//   o String position
+//   o String email
+// }
 
-participant Teachers identified by teacherId {
-  o String teacherId
-  o String name
-  o String tel
-  o String position
-  o String email
-  o String[] room
-}
+// participant Teachers identified by teacherId {
+//   o String teacherId
+//   o String name
+//   o String tel
+//   o String position
+//   o String email
+//   o String[] room // []
+// }
 
-participant Students identified by studentId {
-  o String studentId
-  o String name
-  o String tel
-  o String position
-  o String email
-  o String[] room
-}
+// participant Students identified by studentId {
+//   o String studentId
+//   o String name
+//   o String tel
+//   o String position
+//   o String email
+//   o String[] room
+// }
 
-asset TeacherRoom identified by roomId {
-  o String roomId
-  --> Teachers[] teacher optional
-  o String[] structure optional 
-  o String timestamp optional
-  o String transactionId optional
-  o String transaction_p optional
-}
+// concept Structure {
+//   o String date
+//   o String startTime
+//   o String endTime
+// }
 
-asset StudentRoom identified by roomId {
-  o String roomId
-  --> Students student optional  
-  o String token optional
-  o String timestamp optional
-  o String transactionId optional
-  o String transaction_p optional 
-}
+// asset TeacherRoom identified by roomId {
+//   o String roomId
+//   --> Teachers[] teacher optional // ["a", "", "b"]
+//   o Structure[] structure optional  // ["12/11/18,20.30,21.30", "", "jkhjkhj"]
+//   o String timestamp optional
+//   o String transactionId optional
+//   o String transaction_p optional
+// }
 
-asset TSRoom identified by roomId {
-  o String roomId
-  --> Teachers teacher optional
-  --> Students student optional
-  o String token optional
-  o String timestamp optional
-  o String transactionId optional
-  o String transaction_p optional
-}
+// asset StudentRoom identified by roomId {
+//   o String roomId
+//   --> Students student optional  
+//   o String token optional
+//   o String timestamp optional
+//   o String transactionId optional
+//   o String transaction_p optional 
+// }
 
-transaction TeacherSubmitTeacherRoom {
-  --> Teachers[] teacher
-  --> Teachers[] room
-  --> TeacherRoom roomId
-  --> TeacherRoom[] structure
-}
+// asset TSRoom identified by roomId {
+//   o String roomId
+//   --> Teachers teacher optional
+//   --> Students student optional
+//   o String token optional
+//   o String timestamp optional
+//   o String transactionId optional
+//   o String transaction_p optional
+// }
 
-transaction TeacherSubmitTSRoom {
-  --> Teachers teacher
-  --> TSRoom roomId
-  o String token
-}
+// transaction TeacherInvokeTeacherRoom {
+//   --> Teachers teacher
+//   --> Teachers[] room
+//   --> TeacherRoom roomId
+//   --> TeacherRoom[] structure
+//   o String date
+//   o String starttime 
+//   o String endtime
+// }
 
-transaction StudentSubmitStudentRoom {
-  --> Students student
-  --> StudentRoom roomId
-  o String token
-}
+// transaction TeacherRevokeTeacherRoom{
+//   --> Teachers[] teacher
+  
+// }
 
-transaction StudentSubmitTSRoom {
-  --> Students student
-  --> TSRoom roomId
-  o String token
-}
+// transaction TeacherSubmitTSRoom {
+//   --> Teachers teacher
+//   --> TSRoom roomId
+//   o String token
+// }
+
+// transaction StudentSubmitStudentRoom {
+//   --> Students student
+//   --> StudentRoom roomId
+//   o String token
+// }
+
+// transaction StudentSubmitTSRoom {
+//   --> Students student
+//   --> TSRoom roomId
+//   o String token
+// }

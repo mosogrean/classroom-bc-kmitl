@@ -17,98 +17,46 @@
  * Write your transction processor functions here
  */
 
-/**
- * Sample transaction
- * @param {classroom.management.kmitl.TeacherSubmitTeacherRoom} teacherSubmitTeacherRoom
- * @transaction
- */
-async function teacherSubmitTeacherRoom(request) {
-    
-    const factory = getFactory();
-    const namespace = 'classroom.management.kmitl';
+var factory = getFactory();
+var namespace = 'classroom.management.kmitl';
 
-    let transaction_p
-    if (!request.roomId.transaction_p) {
-        transaction_p = request.getIdentifier();
-    } else {
-        transaction_p = request.roomId.transactionId;
-    }
+// ###################################################################
 
-    
+const teacherRoomFunc = async (request, counts, transaction_p) => {
     // Teacher can Submit TeacherSubmitTeacherRoom to update TeacherRoom
     const teacherRoom = request.roomId;
-    teacherRoom.teacher = [];
-    teacherRoom.teacher.push(factory.newRelationship(namespace, 'Teachers', request.teacher.getIdentifier()));
-    teacherRoom.structure = [];
+    if (typeof teacherRoom.teacher == 'undefined') {
+        teacherRoom.teacher = [factory.newRelationship(namespace, 'Teachers', request.teacher.getIdentifier())];
+        teacherRoom.structure = [request.structure];
+    } else {
+        teacherRoom.teacher.push(factory.newRelationship(namespace, 'Teachers', request.teacher.getIdentifier()));
+        teacherRoom.structure.push(request.structure);
+    }
+    teacherRoom.counts = counts + 1;
+    teacherRoom.matching.push(counts);
+    
     teacherRoom.timestamp = JSON.stringify(request.timestamp);
-    teacherRoom.structure.push(request.teacher.getIdentifier(),request.timestamp);
     teacherRoom.transactionId = request.getIdentifier();
     teacherRoom.transaction_p = transaction_p;
-    const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
-    await assetRegistry.update(teacherRoom);
-
-    const teachers = request.teacher;
-    teachers.teacher = [];
-    teachers.teacher.push(request.teacher);
-    teachers.room = [];
-    teachers.room.push(factory.newRelationship(namespace, 'TeacherRoom',request.roomId.getIdentifier()));
-    const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
-    await participantRegistry.update(teachers);
     
-    for (var i=0 ;i<teachers.teacher.lenght;){
-        
-            if (request.timestamp !== teacherRoom.timestamp){
-                const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
-                await assetRegistry.update(teacherRoom);
+    const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
+    await assetRegistry.update(teacherRoom);   
+}
 
-                const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
-                await participantRegistry.update(teachers);
-
-                i++;
-            }else{
-                i=0;
-            }
-
-
-        }
-    }
-
-/**
- * @param {classroom.management.kmitl.TeacherSubmitTSRoom} teacherSubmitTSRoom
- * @transaction
- */
-async function teacherSubmitTSRoom(request){
-    const factory = getFactory();
-    const namespace = 'classroom.management.kmitl';
-
-    let transaction_p
-    if (!request.roomId.transaction_p) {
-        transaction_p = request.getIdentifier();
-    } else {
-        transaction_p = request.roomId.transactionId;
-    }
-
-    const tsRoom = request.roomId;
-    tsRoom.teacher = factory.newRelationship(namespace, 'Teachers' ,request.teacher.getIdentifier());
-    tsRoom.token = request.token;
-    tsRoom.timestamp = JSON.stringify(request.timestamp);
-    tsRoom.transactionId = request.getIdentifier();
-    tsRoom.transaction_p = transaction_p;
-    const assetRegistry = await getAssetRegistry(namespace + '.TSRoom');
-    await assetRegistry.update(tsRoom);
-
+const teachersFunc = async (request, counts) => {
     const teachers = request.teacher;
-    teachers.tsRoom = factory.newRelationship(namespace, 'TSRoom' ,request.roomId.getIdentifier());
+    teachers.room.push(request.roomId.getIdentifier() + "#" + counts);
     const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
     await participantRegistry.update(teachers);
 }
+
 /**
- * @param {classroom.management.kmitl.StudentSubmitStudentRoom} studentSubmitStudentRoom
+ * Sample transaction
+ * @param {classroom.management.kmitl.TeacherInvokeTeacherRoom} teacherInvokeTeacherRoom
  * @transaction
  */
-async function studentSubmitStudentRoom(request){
-    const factory = getFactory();
-    const namespace = 'classroom.management.kmitl';
+async function teacherInvokeTeacherRoom(request) {
+    
 
     let transaction_p
     if (!request.roomId.transaction_p) {
@@ -116,45 +64,111 @@ async function studentSubmitStudentRoom(request){
     } else {
         transaction_p = request.roomId.transactionId;
     }
-    const studentRoom = request.roomId;
-    studentRoom.student = factory.newRelationship(namespace, 'Students' ,request.student.getIdentifier());
-    studentRoom.token = request.token;
-    studentRoom.timestamp = JSON.stringify(request.timestamp);
-    studentRoom.transactionId = request.getIdentifier();
-    studentRoom.transaction_p = transaction_p;
-    const assetRegistry = await getAssetRegistry(namespace + '.StudentRoom');
-    await assetRegistry.update(studentRoom);
 
-    const students = request.student;
-    students.studentRoom = factory.newRelationship(namespace, 'StudentRoom' ,request.roomId.getIdentifier());
-    const participantRegistry = await getParticipantRegistry(namespace + '.Students');
-    await participantRegistry.update(students);
-}
-/**
- * @param {classroom.management.kmitl.StudentSubmitTSRoom} studentSubmitTSRoom
- * @transaction
- */
-async function studentSubmitTSRoom(request){
-    const factory = getFactory();
-    const namespace = 'classroom.management.kmitl';
+    const counts = request.roomId.counts;
+    await teacherRoomFunc(request, counts, transaction_p);
+    await teachersFunc(request, counts);
+    
+    // for ( let i=0 ;i<teachers.teacher.lenght;){  //if หรือ for
+        
+    //         if (request !== teacherRoom.timestamp){
+    //             const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
+    //             await assetRegistry.update(teacherRoom);
 
-    let transaction_p
-    if (!request.roomId.transaction_p) {
-        transaction_p = request.getIdentifier();
-    } else {
-        transaction_p = request.roomId.transactionId;
+    //             const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
+    //             await participantRegistry.update(teachers);
+
+    //             i++;
+    //         }else{
+    //             i=0;
+    //         }
+
+
+    //     }
     }
-    const tsRoom = request.roomId;
-    tsRoom.student = factory.newRelationship(namespace, 'Students' ,request.student.getIdentifier());
-    tsRoom.token = request.token;
-    tsRoom.timestamp = JSON.stringify(request.timestamp);
-    tsRoom.transactionId = request.getIdentifier();
-    tsRoom.transaction_p = transaction_p;
-    const assetRegistry = await getAssetRegistry(namespace + '.TSRoom');
-    await assetRegistry.update(tsRoom);
 
-    const students = request.student;
-    students.tsRoom = factory.newRelationship(namespace, 'TSRoom' ,request.roomId.getIdentifier());
-    const participantRegistry = await getParticipantRegistry(namespace + '.Students');
-    await participantRegistry.update(students);
-}
+// /**
+//  * @param {classroom.management.kmitl.TeacherSubmitTSRoom} teacherSubmitTSRoom
+//  * @transaction
+//  */
+// async function teacherSubmitTSRoom(request){
+//     const factory = getFactory();
+//     const namespace = 'classroom.management.kmitl';
+
+//     let transaction_p
+//     if (!request.roomId.transaction_p) {
+//         transaction_p = request.getIdentifier();
+//     } else {
+//         transaction_p = request.roomId.transactionId;
+//     }
+
+//     const tsRoom = request.roomId;
+//     tsRoom.teacher = factory.newRelationship(namespace, 'Teachers' ,request.teacher.getIdentifier());
+//     tsRoom.token = request.token;
+//     tsRoom.timestamp = JSON.stringify(request.timestamp);
+//     tsRoom.transactionId = request.getIdentifier();
+//     tsRoom.transaction_p = transaction_p;
+//     const assetRegistry = await getAssetRegistry(namespace + '.TSRoom');
+//     await assetRegistry.update(tsRoom);
+
+//     const teachers = request.teacher;
+//     teachers.tsRoom = factory.newRelationship(namespace, 'TSRoom' ,request.roomId.getIdentifier());
+//     const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
+//     await participantRegistry.update(teachers);
+// }
+// /**
+//  * @param {classroom.management.kmitl.StudentSubmitStudentRoom} studentSubmitStudentRoom
+//  * @transaction
+//  */
+// async function studentSubmitStudentRoom(request){
+//     const factory = getFactory();
+//     const namespace = 'classroom.management.kmitl';
+
+//     let transaction_p
+//     if (!request.roomId.transaction_p) {
+//         transaction_p = request.getIdentifier();
+//     } else {
+//         transaction_p = request.roomId.transactionId;
+//     }
+//     const studentRoom = request.roomId;
+//     studentRoom.student = factory.newRelationship(namespace, 'Students' ,request.student.getIdentifier());
+//     studentRoom.token = request.token;
+//     studentRoom.timestamp = JSON.stringify(request.timestamp);
+//     studentRoom.transactionId = request.getIdentifier();
+//     studentRoom.transaction_p = transaction_p;
+//     const assetRegistry = await getAssetRegistry(namespace + '.StudentRoom');
+//     await assetRegistry.update(studentRoom);
+
+//     const students = request.student;
+//     students.studentRoom = factory.newRelationship(namespace, 'StudentRoom' ,request.roomId.getIdentifier());
+//     const participantRegistry = await getParticipantRegistry(namespace + '.Students');
+//     await participantRegistry.update(students);
+// }
+// /**
+//  * @param {classroom.management.kmitl.StudentSubmitTSRoom} studentSubmitTSRoom
+//  * @transaction
+//  */
+// async function studentSubmitTSRoom(request){
+//     const factory = getFactory();
+//     const namespace = 'classroom.management.kmitl';
+
+//     let transaction_p
+//     if (!request.roomId.transaction_p) {
+//         transaction_p = request.getIdentifier();
+//     } else {
+//         transaction_p = request.roomId.transactionId;
+//     }
+//     const tsRoom = request.roomId;
+//     tsRoom.student = factory.newRelationship(namespace, 'Students' ,request.student.getIdentifier());
+//     tsRoom.token = request.token;
+//     tsRoom.timestamp = JSON.stringify(request.timestamp);
+//     tsRoom.transactionId = request.getIdentifier();
+//     tsRoom.transaction_p = transaction_p;
+//     const assetRegistry = await getAssetRegistry(namespace + '.TSRoom');
+//     await assetRegistry.update(tsRoom);
+
+//     const students = request.student;
+//     students.tsRoom = factory.newRelationship(namespace, 'TSRoom' ,request.roomId.getIdentifier());
+//     const participantRegistry = await getParticipantRegistry(namespace + '.Students');
+//     await participantRegistry.update(students);
+// }
