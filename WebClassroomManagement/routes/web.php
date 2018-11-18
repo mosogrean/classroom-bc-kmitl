@@ -20,9 +20,8 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-// Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+
+
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -40,4 +39,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
+    Route::get('/admin/profile','Admin\HomeController@profile')->name('admin.profile');
+    Route::get('/admin/classroom','Admin\HomeController@classroom')->name('admin.classroom');
+    Route::get('/admin/history','Admin\HomeController@history')->name('admin.history');
+    Route::get('/admin/register','Admin\HomeController@registor')->name('admin.register');
+    Route::get('/admin/editClassroom','Admin\HomeController@edit')->name('admin.editClassroom');
+
+    // Registration Routes...
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
+
+    Route::get();
+
+    
 });
