@@ -37,25 +37,42 @@ async function teacherSubmitTeacherRoom(request) {
     
     // Teacher can Submit TeacherSubmitTeacherRoom to update TeacherRoom
     const teacherRoom = request.roomId;
-    teacherRoom.teacher = factory.newRelationship(namespace, 'Teachers', request.teacher.getIdentifier());
+    teacherRoom.teacher = [];
+    teacherRoom.teacher.push(factory.newRelationship(namespace, 'Teachers', request.teacher.getIdentifier()));
     teacherRoom.structure = [];
     teacherRoom.timestamp = JSON.stringify(request.timestamp);
-    teacherRoom.structure.push(request.teacherId.timestamp.transactionId);
+    teacherRoom.structure.push(request.teacher.getIdentifier(),request.timestamp);
     teacherRoom.transactionId = request.getIdentifier();
     teacherRoom.transaction_p = transaction_p;
-    if (JSON.stringify(request.timestamp) != teacherRoom.timestamp ){
-        for(i=0;i<teachers.lenght;i++)
     const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
     await assetRegistry.update(teacherRoom);
 
     const teachers = request.teacher;
-    teachers.teacherRoom = factory.newRelationship(namespace, 'TeacherRoom',request.roomId.getIdentifier());
+    teachers.teacher = [];
+    teachers.teacher.push(request.teacher);
     teachers.room = [];
-    teachers.room.push(request.roomId.timestamp.transactionId);
+    teachers.room.push(factory.newRelationship(namespace, 'TeacherRoom',request.roomId.getIdentifier()));
     const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
     await participantRegistry.update(teachers);
     
-}
+    for (var i=0 ;i<teachers.teacher.lenght;){
+        
+            if (request.timestamp !== teacherRoom.timestamp){
+                const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
+                await assetRegistry.update(teacherRoom);
+
+                const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
+                await participantRegistry.update(teachers);
+
+                i++;
+            }else{
+                i=0;
+            }
+
+
+        }
+    }
+
 /**
  * @param {classroom.management.kmitl.TeacherSubmitTSRoom} teacherSubmitTSRoom
  * @transaction
