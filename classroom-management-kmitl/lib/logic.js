@@ -58,7 +58,6 @@ const teachersFunc = async (request, counts) => {
 async function teacherInvokeTeacherRoom(request){
 
     const teacherRoom = request.roomId;
-    teacherRoom.structure = [request.structure];
     
     let transaction_p
     if (!request.roomId.transaction_p) {
@@ -69,32 +68,31 @@ async function teacherInvokeTeacherRoom(request){
 
     let boolean = true;
     let lenght = teacherRoom.structure.lenght;
+    throw new Error('debug');
 
-    for (let i = 0; i < lenght; i++){
+    for (let i = 0; i <= lenght; i++){
         /*let checkDate = teacherRoom.structure.select(function(element){
             return element1.date = i
         });
         */
-        let date_match = teacherRoom.structure[counts].date == teacherRoom.structure[i].date;
-        let time_match = teacherRoom.structure[counts].startTime == teacherRoom.structure[i].startTime;
+        let date_match = request.structure.date == teacherRoom.structure[i].date;
+        let time_match = request.structure.startTime == teacherRoom.structure[i].startTime;
         if (date_match){
             if (time_match) {
-                console.error('debug');
-                throw new Error();
+                throw new Error('debug');
                 document.write('reserved');
                 boolean = false;
             }
         }
-        if (boolean == true){
-            console.error('debug2');
-            throw new Error();
-            const counts = request.roomId.counts;
-            await teacherRoomFunc(request, counts, transaction_p);
-            await teachersFunc(request, counts);
-        }
     }
-
+    if (boolean){
+        throw new Error(debug);
+        const counts = request.roomId.counts;
+        await teacherRoomFunc(request, counts, transaction_p);
+        await teachersFunc(request, counts);
 }
+https://insiders.liveshare.vsengsaas.visualstudio.com/join?8BCD89E2CBEBA3532D1169995BF07E521243
+
 
 /*/**
   * @param {classroom.management.kmitl.TeacherRevokeTeacherRoom} teacherRevokeTeacherRoom
