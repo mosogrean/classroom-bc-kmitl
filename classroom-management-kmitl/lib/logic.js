@@ -56,43 +56,39 @@ const teachersFunc = async (request, counts) => {
  * @transaction
  */
 async function teacherInvokeTeacherRoom(request){
-
-    const teacherRoom = request.roomId;
     
+    const teacherRoom = request.roomId;
     let transaction_p
     if (!request.roomId.transaction_p) {
         transaction_p = request.getIdentifier();
     } else {
         transaction_p = request.roomId.transactionId;
     }
-
-    let boolean = true;
-    let lenght = teacherRoom.structure.lenght;
-    throw new Error('debug');
-
-    for (let i = 0; i <= lenght; i++){
-        /*let checkDate = teacherRoom.structure.select(function(element){
-            return element1.date = i
-        });
-        */
-        let date_match = request.structure.date == teacherRoom.structure[i].date;
-        let time_match = request.structure.startTime == teacherRoom.structure[i].startTime;
-        if (date_match){
-            if (time_match) {
-                throw new Error('debug');
-                document.write('reserved');
-                boolean = false;
-            }
-        }
-    }
-    if (boolean){
-        throw new Error(debug);
-        const counts = request.roomId.counts;
+    const counts = request.roomId.counts;
+    if (typeof teacherRoom.structure == 'undefined') {
         await teacherRoomFunc(request, counts, transaction_p);
         await teachersFunc(request, counts);
-}
-https://insiders.liveshare.vsengsaas.visualstudio.com/join?8BCD89E2CBEBA3532D1169995BF07E521243
+    } else if (teacherRoom.structure.length == 0) {
+        await teacherRoomFunc(request, counts, transaction_p);
+        await teachersFunc(request, counts);
+    } else {
+        let boolean = true;
+        for (let i in teacherRoom.structure) {
+            if (teacherRoom.structure[i].date === request.structure.date) {
+                if (teacherRoom.structure[i].startTime === request.structure.startTime) {
+                    boolean = false;
+                }
+            }
+        }
+        if (boolean) {
+            await teacherRoomFunc(request, counts, transaction_p);
+            await teachersFunc(request, counts);
+        } else {
+            throw new Error ("#### Please! check your datetime has already exsit. ####")
+        }
+    }
 
+}
 
 /*/**
   * @param {classroom.management.kmitl.TeacherRevokeTeacherRoom} teacherRevokeTeacherRoom
