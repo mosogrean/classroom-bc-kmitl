@@ -55,9 +55,11 @@ const teachersFunc = async (request, counts) => {
  * @param {classroom.management.kmitl.TeacherInvokeTeacherRoom} teacherInvokeTeacherRoom
  * @transaction
  */
-async function teacherInvokeTeacherRoom(request) {
-    
+async function teacherInvokeTeacherRoom(request){
 
+    const teacherRoom = request.roomId;
+    teacherRoom.structure = [request.structure];
+    
     let transaction_p
     if (!request.roomId.transaction_p) {
         transaction_p = request.getIdentifier();
@@ -65,27 +67,69 @@ async function teacherInvokeTeacherRoom(request) {
         transaction_p = request.roomId.transactionId;
     }
 
-    const counts = request.roomId.counts;
-    await teacherRoomFunc(request, counts, transaction_p);
-    await teachersFunc(request, counts);
-    
-    // for ( let i=0 ;i<teachers.teacher.lenght;){  //if หรือ for
-        
-    //         if (request !== teacherRoom.timestamp){
-    //             const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
-    //             await assetRegistry.update(teacherRoom);
+    let boolean = true;
+    let lenght = teacherRoom.structure.lenght;
 
-    //             const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
-    //             await participantRegistry.update(teachers);
-
-    //             i++;
-    //         }else{
-    //             i=0;
-    //         }
-
-
-    //     }
+    for (let i = 0; i < lenght; i++){
+        /*let checkDate = teacherRoom.structure.select(function(element){
+            return element1.date = i
+        });
+        */
+        let date_match = teacherRoom.structure[counts].date == teacherRoom.structure[i].date;
+        let time_match = teacherRoom.structure[counts].startTime == teacherRoom.structure[i].startTime;
+        if (date_match){
+            if (time_match) {
+                console.error('debug');
+                throw new Error();
+                document.write('reserved');
+                boolean = false;
+            }
+        }
+        if (boolean == true){
+            console.error('debug2');
+            throw new Error();
+            const counts = request.roomId.counts;
+            await teacherRoomFunc(request, counts, transaction_p);
+            await teachersFunc(request, counts);
+        }
     }
+
+}
+
+/*/**
+  * @param {classroom.management.kmitl.TeacherRevokeTeacherRoom} teacherRevokeTeacherRoom
+  * @transaction
+  */
+/*async function teacherRevokeTeacherRoom(request){
+
+    const teacherRoom = request.roomId;
+    const teacher = request.teacher;
+    let transaction_p
+
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+
+    let date = new Date(day/month/year);
+    let time = new Date(hour.minute);
+
+    for (let i = 0; i < teacherRoom.structure.lenght; i++){
+        const date_end = teacherRoom.structure[i].date == date;
+        const time_end = teacherRoom.structure[i].startTime == time;
+        if (date_end){
+            if (time_end){
+                teacherRoom.structure.splice(i,1);
+                teacherRoom.teacher.splice(i,1);
+                teacher.room.splice(i,1);
+            }
+        }
+    }
+
+}
+    //     }
+
 
 // /**
 //  * @param {classroom.management.kmitl.TeacherSubmitTSRoom} teacherSubmitTSRoom
