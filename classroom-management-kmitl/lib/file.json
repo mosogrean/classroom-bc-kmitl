@@ -9,3 +9,15 @@
     "endTime": "12.00"
   }
 }
+
+{
+  "$class": "classroom.management.kmitl.TeacherRevokeTeacherRoom",
+  "teacher": "resource:classroom.management.kmitl.Teachers#PM",
+  "roomId": "resource:classroom.management.kmitl.TeacherRoom#2",
+  "structure": {
+    "$class": "classroom.management.kmitl.Structure",
+    "date": "20/11/2561",
+    "startTime": "9.00",
+    "endTime": "12.00"
+  }
+}
