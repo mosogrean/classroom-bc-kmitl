@@ -90,33 +90,36 @@ async function teacherInvokeTeacherRoom(request){
 
 }
 
-/*/**
+/**
   * @param {classroom.management.kmitl.TeacherRevokeTeacherRoom} teacherRevokeTeacherRoom
   * @transaction
   */
-/*async function teacherRevokeTeacherRoom(request){
+async function teacherRevokeTeacherRoom(request){
 
     const teacherRoom = request.roomId;
-    const teacher = request.teacher;
-    let transaction_p
-
-    if (!request.roomId.transaction_p) {
-        transaction_p = request.getIdentifier();
-    } else {
-        transaction_p = request.roomId.transactionId;
-    }
+    const teachers = request.teacher;
+    const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
+    const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
 
     let date = new Date(day/month/year);
     let time = new Date(hour.minute);
-
-    for (let i = 0; i < teacherRoom.structure.lenght; i++){
-        const date_end = teacherRoom.structure[i].date == date;
-        const time_end = teacherRoom.structure[i].startTime == time;
+    
+    for (let i in teacherRoom.structure){
+        const date_end = teacherRoom.structure[i].date === date;
+        const time_end = teacherRoom.structure[i].endTime === time;
         if (date_end){
             if (time_end){
+
+                alert('Your request timeout. Please check out in 30 minute.');
+
+                setTimeout(function(){
                 teacherRoom.structure.splice(i,1);
                 teacherRoom.teacher.splice(i,1);
                 teacher.room.splice(i,1);
+                },180000); //delay is in milliseconds 
+                
+                await assetRegistry.update(teacherRoom); 
+                await participantRegistry.update(teachers); 
             }
         }
     }

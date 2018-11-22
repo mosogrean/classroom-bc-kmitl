@@ -54,7 +54,6 @@ transaction TeacherInvokeTeacherRoom {
 transaction TeacherRevokeTeacherRoom{
   --> Teachers teacher
   --> TeacherRoom roomId
-  o Structure structure
 }
 // }
 
