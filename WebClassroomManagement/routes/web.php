@@ -35,7 +35,7 @@ Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('ver
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+oute::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');

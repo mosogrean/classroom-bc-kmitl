@@ -36,9 +36,4 @@ class HomeController extends Controller
     {
         return  view('admin.classroom');
     }
-
-    public function editClass()
-    {
-        return view('admin.editClassroom');
-    }
 }
