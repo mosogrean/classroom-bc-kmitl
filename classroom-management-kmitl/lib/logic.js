@@ -90,57 +90,34 @@ async function teacherInvokeTeacherRoom(request){
 
 }
 
-const teacherRoomCheckout = async (request, transaction_p) =>  {
-
-    const teacherRoom = request.roomId;
-    teacherRoom.matching.splice(i,1);
-    teacherRoom.structure.splice(i,1);
-    teacherRoom.teacher.splice(i,1);
-    teacherRoom.timestamp = JSON.stringify(request.timestamp);
-    teacherRoom.transactionId = request.getIdentifier();
-    teacherRoom.transaction_p = transaction_p;
-    const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
-    await assetRegistry.update(teacherRoom);
-}
-
-const teachersCheckout = async (request) => {
-
-    const teachers = request.teacher;
-    teachers.room.splice(i,1);
-    const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
-    await participantRegistry.update(teachers); 
-}
-
 /**
   * @param {classroom.management.kmitl.TeacherRevokeTeacherRoom} teacherRevokeTeacherRoom
   * @transaction
   */
 async function teacherRevokeTeacherRoom(request){
 
-    const teacherRoom = request.roomId;
-    
     let transaction_p
     if (!request.roomId.transaction_p) {
         transaction_p = request.getIdentifier();
     } else {
         transaction_p = request.roomId.transactionId;
     }
-    
-    let date = new Date().toLocaleDateString();
-    let time = new Date().toLocaleTimeString();
-    
 
-    for (let i in teacherRoom.structure){
-        const date_end = teacherRoom.structure[i].date === date;
-        const time_end = teacherRoom.structure[i].endTime === time;
-        if (date_end){
-            if (time_end){
-                await setTimeout(teacherRoomCheckout(request, transaction_p),180000); 
-                await setTimeout(teachersCheckout(request),180000);
-            }
-        }
-    }
+    const teachers = request.teacher;
+    teachers.room.splice(request.room,1);
+    const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
+    await participantRegistry.update(teachers);
 
+    const count = request.room.counts;
+    const teacherRoom = request.roomId;
+    teacherRoom.matching.splice(count,1);
+    teacherRoom.structure.splice(count,1);
+    teacherRoom.teacher.splice(count,1);
+    teacherRoom.timestamp = JSON.stringify(request.timestamp);
+    teacherRoom.transactionId = request.getIdentifier();
+    teacherRoom.transaction_p = transaction_p;
+    const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
+    await assetRegistry.update(teacherRoom);
 }
     //     }
 
