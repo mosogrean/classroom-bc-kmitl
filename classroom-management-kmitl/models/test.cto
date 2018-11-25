@@ -18,6 +18,15 @@
 
 namespace classroom.management.kmitl
 
+participant Admins identified by adminId {
+  o String adminId
+  o String name
+  o String tel
+  o String position
+  o String email
+  o String[] room 
+}
+
 participant Teachers identified by teacherId {
   o String teacherId
   o String name
@@ -25,6 +34,15 @@ participant Teachers identified by teacherId {
   o String position
   o String email
   o String[] room 
+}
+
+participant Students identified by studentId {
+  o String studentId
+  o String name
+  o String tel
+  o String position
+  o String email
+  o String[] room
 }
 
 concept Structure {
@@ -44,6 +62,28 @@ asset TeacherRoom identified by roomId {
   o String transaction_p optional
 }
 
+asset StudentRoom identified by roomId {
+  o String roomId
+  o Integer counts default = 0
+  o Integer[] matching
+  --> Students[] student optional
+  o Structure[] structure optional
+  o String timestamp optional
+  o String transactionId optional
+  o String transaction_p optional
+}
+
+asset TSRoom identified by roomId {
+  o String roomId
+  o Integer counts default = 0
+  o Integer[] matching
+  --> Teachers[] teacher optional
+  --> Students[] student optional
+  o Structure[] structure optional
+  o String timestamp optional
+  o String transactionId optional
+  o String transaction_p optional
+}
 
 transaction TeacherInvokeTeacherRoom {
   --> Teachers teacher
@@ -51,22 +91,44 @@ transaction TeacherInvokeTeacherRoom {
   o Structure structure
 }
 
-transaction TeacherRevokeTeacherRoom{
+transaction TeacherRevokeTeacherRoom {
   --> Teachers teacher
   --> TeacherRoom roomId
   o Integer counts
 }
-// }
 
+transaction StudentInvokeStudentRoom {
+  --> Students student
+  --> StudentRoom roomId
+  o Structure structure
+}
 
-/** 
+transaction StudentRevokeStudentRoom {
+  --> Students student
+  --> StudentRoom roomId
+  o Integer counts
+}
 
-  pa 
-  teacher 
-    room ["2#1", "2#4"]
+transaction TeacherInvokeTSRoom {
+  --> Teachers teacher
+  --> TSRoom roomId
+  o Structure structure
+}
 
-  counts = 5
-  macthing [1, 4]
-  teacher [ "PM","PM"]
-  structure [ {}, {}]
- */
+transaction TeacherRevokeTSRoom {
+  --> Teachers teacher
+  --> TSRoom roomId
+  o Integer counts
+}
+
+transaction StudentInvokeTSRoom {
+  --> Students student
+  --> TSRoom roomId
+  o Structure structure
+} 
+
+transaction StudentRevokeRoom {
+  --> Students student
+  --> TSRoom roomId
+  o Integer counts
+}
