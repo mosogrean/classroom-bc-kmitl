@@ -54,7 +54,7 @@ transaction TeacherInvokeTeacherRoom {
 transaction TeacherRevokeTeacherRoom{
   --> Teachers teacher
   --> TeacherRoom roomId
-  --> Teachers room
+  o Integer counts
 }
 // }
 

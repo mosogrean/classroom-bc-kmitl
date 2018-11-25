@@ -34,11 +34,9 @@ const teacherRoomFunc = async (request, counts, transaction_p) => {
     }
     teacherRoom.counts = counts + 1;
     teacherRoom.matching.push(counts);
-    
     teacherRoom.timestamp = JSON.stringify(request.timestamp);
     teacherRoom.transactionId = request.getIdentifier();
     teacherRoom.transaction_p = transaction_p;
-    
     const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
     await assetRegistry.update(teacherRoom);   
 }
@@ -84,7 +82,7 @@ async function teacherInvokeTeacherRoom(request){
             await teacherRoomFunc(request, counts, transaction_p);
             await teachersFunc(request, counts);
         } else {
-            throw new Error ("#### Please! check your datetime has already exsit. ####")
+            throw new Error ("#### This datetime has already exsit. ####")
         }
     }
 
@@ -96,6 +94,7 @@ async function teacherInvokeTeacherRoom(request){
   */
 async function teacherRevokeTeacherRoom(request){
 
+    const teacherRoom = request.roomId;
     let transaction_p
     if (!request.roomId.transaction_p) {
         transaction_p = request.getIdentifier();
@@ -103,22 +102,37 @@ async function teacherRevokeTeacherRoom(request){
         transaction_p = request.roomId.transactionId;
     }
 
-    const teachers = request.teacher;
-    teachers.room.splice(request.room,1);
-    const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
-    await participantRegistry.update(teachers);
+    let check = 0;
+    let boolean = false;
+    for (let i = 0 ; i < teacherRoom.matching.length ; i++){
+        if (request.counts === teacherRoom.matching[i]){
+            check = i;
+            boolean = true;
+        }
+    }
+    if (boolean){
+        const teacherRoom = request.roomId;
+        teacherRoom.matching.splice(check,1);
+        teacherRoom.structure.splice(check,1);
+        teacherRoom.teacher.splice(check,1);
+        teacherRoom.timestamp = JSON.stringify(request.timestamp);
+        teacherRoom.transactionId = request.getIdentifier();
+        teacherRoom.transaction_p = transaction_p;
+        const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
+        await assetRegistry.update(teacherRoom);
 
-    const count = request.room.counts;
-    const teacherRoom = request.roomId;
-    teacherRoom.matching.splice(count,1);
-    teacherRoom.structure.splice(count,1);
-    teacherRoom.teacher.splice(count,1);
-    teacherRoom.timestamp = JSON.stringify(request.timestamp);
-    teacherRoom.transactionId = request.getIdentifier();
-    teacherRoom.transaction_p = transaction_p;
-    const assetRegistry = await getAssetRegistry(namespace + '.TeacherRoom');
-    await assetRegistry.update(teacherRoom);
+        const teachers = request.teacher;
+        teachers.room.splice(request.roomId.getIdentifier() + "#" + request.counts,1);
+        const participantRegistry = await getParticipantRegistry(namespace + '.Teachers');
+        await participantRegistry.update(teachers);
+    } else {
+        throw new Error ("#### This reservation is not booked ####")
+    }
 }
+
+   
+
+    
     //     }
 
 
@@ -207,3 +221,4 @@ async function teacherRevokeTeacherRoom(request){
 //     const participantRegistry = await getParticipantRegistry(namespace + '.Students');
 //     await participantRegistry.update(students);
 // }
+
