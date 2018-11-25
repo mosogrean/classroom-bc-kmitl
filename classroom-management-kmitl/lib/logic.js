@@ -130,8 +130,112 @@ async function teacherRevokeTeacherRoom(request){
     }
 }
 
-   
+const studentRoomFunc = async (request, counts, transaction_p) => {
+    // Student can Submit TeacherSubmitTeacherRoom to update TeacherRoom
+    const studentRoom = request.roomId;
+    if (typeof studentRoom.student == 'undefined') {
+        studentRoom.student = [factory.newRelationship(namespace, 'Students', request.student.getIdentifier())];
+        studentRoom.structure = [request.structure];
+    } else {
+        studentRoom.student.push(factory.newRelationship(namespace, 'Students', request.student.getIdentifier()));
+        studentRoom.structure.push(request.structure);
+    }
+    studentRoom.counts = counts + 1;
+    studentRoom.matching.push(counts);
+    studentRoom.timestamp = JSON.stringify(request.timestamp);
+    studentRoom.transactionId = request.getIdentifier();
+    studentRoom.transaction_p = transaction_p;
+    const assetRegistry = await getAssetRegistry(namespace + '.StudentRoom');
+    await assetRegistry.update(studentRoom);   
+}
 
+const studentsFunc = async (request, counts) => {
+    const students = request.student;
+    students.room.push(request.roomId.getIdentifier() + "#" + counts);
+    const participantRegistry = await getParticipantRegistry(namespace + '.Students');
+    await participantRegistry.update(students);
+}
+
+/**
+  * @param {classroom.management.kmitl.StudentInvokeStudentRoom} studentInvokeStudentRoom
+  * @transaction
+  */
+async function studentInvokeStudentRoom(request){
+    
+    const studentRoom = request.roomId;
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+    const counts = request.roomId.counts;
+    if (typeof studentRoom.structure == 'undefined') {
+        await studentRoomFunc(request, counts, transaction_p);
+        await studentsFunc(request, counts);
+    } else if (studentRoom.structure.length == 0) {
+        await studentRoomFunc(request, counts, transaction_p);
+        await studentsFunc(request, counts);
+    } else {
+        let boolean = true;
+        for (let i in studentRoom.structure) {
+            if (studentRoom.structure[i].date === request.structure.date) {
+                if (studentRoom.structure[i].startTime === request.structure.startTime) {
+                    boolean = false;
+                }
+            }
+        }
+        if (boolean) {
+            await studentRoomFunc(request, counts, transaction_p);
+            await studentsFunc(request, counts);
+        } else {
+            throw new Error ("#### This datetime has already exsit. ####")
+        }
+    }
+
+}
+
+/**
+  * @param {classroom.management.kmitl.StudentRevokeStudentRoom} studentRevokeStudentRoom
+  * @transaction
+  */
+ async function studentRevokeStudentRoom(request){
+
+    const studentRoom = request.roomId;
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+
+    let check = 0;
+    let boolean = false;
+    for (let i = 0 ; i < studentRoom.matching.length ; i++){
+        if (request.counts === studentRoom.matching[i]){
+            check = i;
+            boolean = true;
+        }
+    }
+    if (boolean){
+        const studentRoom = request.roomId;
+        studentRoom.matching.splice(check,1);
+        studentRoom.structure.splice(check,1);
+        studentRoom.teacher.splice(check,1);
+        studentRoom.timestamp = JSON.stringify(request.timestamp);
+        studentRoom.transactionId = request.getIdentifier();
+        studentRoom.transaction_p = transaction_p;
+        const assetRegistry = await getAssetRegistry(namespace + '.StudentRoom');
+        await assetRegistry.update(studentRoom);
+
+        const students = request.student;
+        students.room.splice(request.roomId.getIdentifier() + "#" + request.counts,1);
+        const participantRegistry = await getParticipantRegistry(namespace + '.Students');
+        await participantRegistry.update(students);
+    } else {
+        throw new Error ("#### This reservation is not booked ####")
+    }
+}
     
     //     }
 
