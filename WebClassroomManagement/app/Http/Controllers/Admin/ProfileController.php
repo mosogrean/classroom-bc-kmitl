@@ -14,6 +14,6 @@ class ProfileController extends Controller
 
     public function editProfile()
     {
-        $edit->
+        $edit
     }
 }
