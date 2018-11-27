@@ -24,10 +24,10 @@ class LoginController extends Controller
         if ($login) {
             $info = User::where(['personal_id' => $request->username])->get()->first();
             if ($info->is_admin == true) {
-                return redirect (route('admin.home'));
+                return redirect (route('admin.dashboard'));
             }
         }
-        return redirect('login');
+        return redirect(route('login'));
 
     }
 

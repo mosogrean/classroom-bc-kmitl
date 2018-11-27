@@ -35,9 +35,10 @@ Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('ver
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 
-oute::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'is_admin'], function () {
+    Route::get('/admin/dashboard','Admin\DashboardController@index')->name('admin.dashboard');
     Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
     Route::get('/admin/profile','Admin\HomeController@profile')->name('admin.profile');
     Route::get('/admin/classroom','Admin\HomeController@classroom')->name('admin.classroom');
@@ -48,8 +49,8 @@ Route::group(['middleware' => 'is_admin'], function () {
     // Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'Auth\RegisterController@register');
-
-    Route::get();
-
-    
+    // Route::get();
 });
+
+Route::get('/admin/user/register','Admin\UserController@registerPage')->name('admin.user.register');
+Route::post('/admin/user/register/store', 'Admin\UserController@registerStore')->name('admin.user.register.store');
