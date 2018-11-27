@@ -24,7 +24,6 @@ participant Admins identified by adminId {
   o String tel
   o String position
   o String email
-  o String[] room 
 }
 
 participant Teachers identified by teacherId {
@@ -42,7 +41,7 @@ participant Students identified by studentId {
   o String tel
   o String position
   o String email
-  o String[] room
+  o String[] room 
 }
 
 concept Structure {
@@ -76,10 +75,14 @@ asset StudentRoom identified by roomId {
 asset TSRoom identified by roomId {
   o String roomId
   o Integer counts default = 0
-  o Integer[] matching
+  o Integer teacherCounts default = 0
+  o Integer studentCounts default = 0
+  o Integer[] teacherMatching
+  o Integer[] studentMatching
   --> Teachers[] teacher optional
   --> Students[] student optional
-  o Structure[] structure optional
+  o Structure[] teacherStructure optional
+  o Structure[] studentStructure optional
   o String timestamp optional
   o String transactionId optional
   o String transaction_p optional
@@ -127,7 +130,7 @@ transaction StudentInvokeTSRoom {
   o Structure structure
 } 
 
-transaction StudentRevokeRoom {
+transaction StudentRevokeTSRoom {
   --> Students student
   --> TSRoom roomId
   o Integer counts
