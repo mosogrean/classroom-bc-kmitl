@@ -14,7 +14,8 @@
                             </div>
                         @endif
 
-                        Here is list account.
+                            <a href="{{ route('admin.user.list.teacher') }}" class="btn btn-info" role="button">Teacher</a>
+                            <a href="{{ route('admin.user.list.student') }}" class="btn btn-info" role="button">Student</a>
 
             </div>
         </div>

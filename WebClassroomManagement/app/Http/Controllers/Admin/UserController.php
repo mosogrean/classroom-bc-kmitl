@@ -21,4 +21,14 @@ class UserController extends Controller
     {
         return view('admin.user.list');
     }
+
+    public function teacherListPage()
+    {
+        return view('admin.user.teacherList');
+    }
+
+    public function  studentListPage()
+    {
+        return view('admin.user.studentList');
+    }
 }
