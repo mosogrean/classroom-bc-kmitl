@@ -16,36 +16,43 @@
 
                         <a href="{{ route('admin.user.list.teacher') }}" class="btn btn-info" role="button">Teacher</a>
                         <a href="{{ route('admin.user.list.student') }}" class="btn btn-info" role="button">Student</a>
-
-                            <div class="container">
-                                <h2>Hover Rows</h2>
-                                <p>The .table-hover class enables a hover state on table rows:</p>
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Firstname</th>
-                                        <th>Lastname</th>
-                                        <th>Email</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mary</td>
-                                        <td>Moe</td>
-                                        <td>mary@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>July</td>
-                                        <td>Dooley</td>
-                                        <td>july@example.com</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div><br></div>
+                            <div class="card">
+                                <div class="container">
+                                    <div><br></div>
+                                    <h2>Teachers list</h2>
+                                    <p>ตารางแสดงข้อมูลอาจารย์ทั้งหมดที่อย่ในระบบ ซึ่งประกอบด้วย:</p>
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Teacher ID</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Reserving</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>11548661</td>
+                                            <td>รศ.ดร.ปราโมทย์ วาดเขียน</td>
+                                            <td>คณะบดี</td>
+                                            <th>2</th>
+                                        </tr>
+                                        <tr>
+                                            <td>48761248</td>
+                                            <td>รศ.ดร.จีรสุดา โกษียาภรณ์</td>
+                                            <td>รองอธีการบดี</td>
+                                            <th>3</th>
+                                        </tr>
+                                        <tr>
+                                            <td>98456712</td>
+                                            <td>รศ.ดร.ตุลยา </td>
+                                            <td>อธิการบดี</td>
+                                            <th>5</th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                     </div>
                 </div>

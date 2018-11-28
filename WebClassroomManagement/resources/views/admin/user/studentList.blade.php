@@ -17,35 +17,47 @@
                         <a href="{{ route('admin.user.list.teacher') }}" class="btn btn-info" role="button">Teacher</a>
                         <a href="{{ route('admin.user.list.student') }}" class="btn btn-info" role="button">Student</a>
 
-                            <div class="container">
-                                <h2>Hover Rows</h2>
-                                <p>The .table-hover class enables a hover state on table rows:</p>
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Firstname</th>
-                                        <th>Lastname</th>
-                                        <th>Email</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mary</td>
-                                        <td>Moe</td>
-                                        <td>mary@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>July</td>
-                                        <td>Dooley</td>
-                                        <td>july@example.com</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div><br></div>
+                            <div class="card">
+                                <div class="container">
+                                    <div><br></div>
+                                    <h2>Students list</h2>
+                                    <p>ตารางแสดงข้อมูลนักเรียนทั้งหมดที่อย่ในระบบ ซึ่งประกอบด้วย: </p>
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Student ID</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Reserving</th>
+                                            <th>token</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>58010187</td>
+                                            <td>จิรภัทร กิจทำ</td>
+                                            <td>นักศึกษาชั้นปีที่ 4</td>
+                                            <th>2</th>
+                                            <th>30</th>
+                                        </tr>
+                                        <tr>
+                                            <td>58010211</td>
+                                            <td>เจษฎา ธระสวัสดิ์</td>
+                                            <td>นักศึกษาชั้นปีที่ 4</td>
+                                            <th>4</th>
+                                            <th>23</th>
+                                        </tr>
+                                        <tr>
+                                            <td>58010353</td>
+                                            <td>ณัชพล อุบลสัคคะ</td>
+                                            <td>นักศึกษาชั้นปีที่ 4</td>
+                                            <th>5</th>
+                                            <th>17</th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                     </div>
                 </div>
