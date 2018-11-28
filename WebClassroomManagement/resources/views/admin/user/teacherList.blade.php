@@ -33,19 +33,19 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>11548661</td>
+                                            <td><a href="{{ route('admin.user.list.teacher.info', ["11548661"]) }}">11548661</a></td>
                                             <td>รศ.ดร.ปราโมทย์ วาดเขียน</td>
                                             <td>คณะบดี</td>
                                             <th>2</th>
                                         </tr>
                                         <tr>
-                                            <td>48761248</td>
+                                            <td><a href="{{ route('admin.user.list.teacher.info', "48761248") }}">48761248</a></td>
                                             <td>รศ.ดร.จีรสุดา โกษียาภรณ์</td>
                                             <td>รองอธีการบดี</td>
                                             <th>3</th>
                                         </tr>
                                         <tr>
-                                            <td>98456712</td>
+                                            <td><a href="{{ route('admin.user.list.teacher.info', "98456712") }}">98456712</a></td>
                                             <td>รศ.ดร.ตุลยา </td>
                                             <td>อธิการบดี</td>
                                             <th>5</th>

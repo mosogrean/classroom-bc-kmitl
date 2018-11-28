@@ -31,4 +31,14 @@ class UserController extends Controller
     {
         return view('admin.user.studentList');
     }
+
+    public function teacherInfo($id)
+    {
+        return view('admin.user.teacherInfo', ['id' => $id]);
+    }
+
+    public function studentInfo($id)
+    {
+        return view('admin.user.studentInfo', ['id' => $id]);
+    }
 }

@@ -35,21 +35,21 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>58010187</td>
+                                            <td><a href="{{ route('admin.user.list.student.info', "58010187") }}">58010187</a></td>
                                             <td>จิรภัทร กิจทำ</td>
                                             <td>นักศึกษาชั้นปีที่ 4</td>
                                             <th>2</th>
                                             <th>30</th>
                                         </tr>
                                         <tr>
-                                            <td>58010211</td>
+                                            <td><a href="{{ route('admin.user.list.student.info', "58010211") }}">58010211</a></td>
                                             <td>เจษฎา ธระสวัสดิ์</td>
                                             <td>นักศึกษาชั้นปีที่ 4</td>
                                             <th>4</th>
                                             <th>23</th>
                                         </tr>
                                         <tr>
-                                            <td>58010353</td>
+                                            <td><a href="{{ route('admin.user.list.student.info', "58010353") }}">58010353</a></td>
                                             <td>ณัชพล อุบลสัคคะ</td>
                                             <td>นักศึกษาชั้นปีที่ 4</td>
                                             <th>5</th>

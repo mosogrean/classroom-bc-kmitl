@@ -47,6 +47,8 @@ Route::group(['middleware' => 'is_admin'], function () {
 
 Route::get('/admin/user/register','Admin\UserController@registerPage')->name('admin.user.register');
 Route::post('/admin/user/register/store', 'Admin\UserController@registerStore')->name('admin.user.register.store');
-Route::get('/admin/user/list','Admin\UserController@listPage')->name('admin.user.list');
+Route::get('/admin/user/list', 'Admin\UserController@listPage')->name('admin.user.list');
 Route::get('/admin/user/list/teacher', 'Admin\UserController@teacherListPage')->name('admin.user.list.teacher');
-Route::get('/admin/user/list/student','Admin\UserController@studentListPage')->name('admin.user.list.student');
+Route::get('/admin/user/list/student', 'Admin\UserController@studentListPage')->name('admin.user.list.student');
+Route::get('/admin/user/list/teacher/{id}', 'Admin\UserController@teacherInfo')->name('admin.user.list.teacher.info');
+Route::get('/admin/user/list/student/{id}', 'Admin\UserController@studentInfo')->name('admin.user.list.student.info');
