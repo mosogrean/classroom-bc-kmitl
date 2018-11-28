@@ -16,4 +16,9 @@ class UserController extends Controller
     {
         return redirect(route('admin.dashboard'));
     }
+
+    public function listPage()
+    {
+        return view('admin.user.list');
+    }
 }

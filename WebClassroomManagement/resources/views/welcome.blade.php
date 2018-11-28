@@ -70,7 +70,7 @@
                 <div class="top-right links">
                     @auth
                         @if(\Illuminate\Support\Facades\Auth::user()->is_admin)
-                            <a href="{{ route('admin.home') }}">Home</a>
+                            <a href="{{ route('admin.dashboard') }}">Home</a>
                         @endif
                     @else
                         <a href="{{ route('login') }}">Login</a>

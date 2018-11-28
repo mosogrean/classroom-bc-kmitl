@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Admin role</div>
+                    <div class="card-header">List account</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,12 +14,11 @@
                             </div>
                         @endif
 
-                        Welcomeback Mr.admin!
-                    </div><a href="{{ route('admin.user.register') }}" class="btn btn-info" role="button">register user</a>
-                    <a href="{{ route('admin.user.list') }}" class="btn btn-info" role="button">list account</a></div>
-                    </div>
-                </div>
+                        Here is list account.
+
             </div>
         </div>
+    </div>
+    </div>
     </div>
 @endsection
