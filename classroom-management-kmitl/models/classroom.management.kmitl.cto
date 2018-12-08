@@ -1,112 +1,172 @@
-// /*
-//  * Licensed under the Apache License, Version 2.0 (the "License");
-//  * you may not use this file except in compliance with the License.
-//  * You may obtain a copy of the License at
-//  *
-//  * http://www.apache.org/licenses/LICENSE-2.0
-//  *
-//  * Unless required by applicable law or agreed to in writing, software
-//  * distributed under the License is distributed on an "AS IS" BASIS,
-//  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//  * See the License for the specific language governing permissions and
-//  * limitations under the License.
-//  */
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-// /**
-//  * Write your model definitions here
-//  */
+/**
+ * Write your model definitions here
+ */
 
-// namespace classroom.management.kmitl
+namespace classroom.management.kmitl
 
-// participant Admins identified by adminId {
-//   o String adminId
-//   o String name
-//   o String tel
-//   o String position
-//   o String email
-// }
+participant Admins identified by adminId {
+  o String adminId
+  o String name
+  o String tel
+  o String position
+  o String email
+}
 
-// participant Teachers identified by teacherId {
-//   o String teacherId
-//   o String name
-//   o String tel
-//   o String position
-//   o String email
-//   o String[] room // []
-// }
+participant Teachers identified by teacherId {
+  o String teacherId
+  o String name
+  o String tel
+  o String position
+  o String email
+  o String[] room 
+}
 
-// participant Students identified by studentId {
-//   o String studentId
-//   o String name
-//   o String tel
-//   o String position
-//   o String email
-//   o String[] room
-// }
+participant Students identified by studentId {
+  o String studentId
+  o String name
+  o String tel
+  o String position
+  o String email
+  o Integer token default = 2 
+  o String[] room 
+}
 
-// concept Structure {
-//   o String date
-//   o String startTime
-//   o String endTime
-// }
+concept Structure {
+  o String date
+  o String startTime
+  o String endTime
+}
 
-// asset TeacherRoom identified by roomId {
-//   o String roomId
-//   --> Teachers[] teacher optional // ["a", "", "b"]
-//   o Structure[] structure optional  // ["12/11/18,20.30,21.30", "", "jkhjkhj"]
-//   o String timestamp optional
-//   o String transactionId optional
-//   o String transaction_p optional
-// }
+asset TeacherRoom identified by roomId {
+  o String roomId
+  o Integer counts default = 0
+  o Integer[] matching
+  --> Teachers[] teacher optional
+  o Structure[] structure optional
+  o String timestamp optional
+  o String transactionId optional
+  o String transaction_p optional
+}
 
-// asset StudentRoom identified by roomId {
-//   o String roomId
-//   --> Students student optional  
-//   o String token optional
-//   o String timestamp optional
-//   o String transactionId optional
-//   o String transaction_p optional 
-// }
+asset StudentRoom identified by roomId {
+  o String roomId
+  o Integer counts default = 0
+  o Integer[] matching
+  --> Students[] student optional
+  o Structure[] structure optional
+  o String timestamp optional
+  o String transactionId optional
+  o String transaction_p optional
+}
 
-// asset TSRoom identified by roomId {
-//   o String roomId
-//   --> Teachers teacher optional
-//   --> Students student optional
-//   o String token optional
-//   o String timestamp optional
-//   o String transactionId optional
-//   o String transaction_p optional
-// }
+asset TSRoom identified by roomId {
+  o String roomId
+  o Integer counts default = 0
+  o Integer teacherCounts default = 0
+  o Integer studentCounts default = 0
+  o Integer[] teacherMatching
+  o Integer[] studentMatching
+  --> Teachers[] teacher optional
+  --> Students[] student optional
+  o Structure[] teacherStructure optional
+  o Structure[] studentStructure optional
+  o String timestamp optional
+  o String transactionId optional
+  o String transaction_p optional
+}
 
-// transaction TeacherInvokeTeacherRoom {
-//   --> Teachers teacher
-//   --> Teachers[] room
-//   --> TeacherRoom roomId
-//   --> TeacherRoom[] structure
-//   o String date
-//   o String starttime 
-//   o String endtime
-// }
+transaction TeacherInvokeTeacherRoom {
+  --> Teachers teacher
+  --> TeacherRoom roomId
+  o Structure structure
+}
 
-// transaction TeacherRevokeTeacherRoom{
-//   --> Teachers[] teacher
-  
-// }
+transaction TeacherRevokeTeacherRoom {
+  --> Teachers teacher
+  --> TeacherRoom roomId
+  o Integer counts
+}
 
-// transaction TeacherSubmitTSRoom {
-//   --> Teachers teacher
-//   --> TSRoom roomId
-//   o String token
-// }
+transaction StudentInvokeStudentRoom {
+  --> Students student
+  --> StudentRoom roomId
+  o Structure structure
+}
 
-// transaction StudentSubmitStudentRoom {
-//   --> Students student
-//   --> StudentRoom roomId
-//   o String token
-// }
+transaction StudentRevokeStudentRoom {
+  --> Students student
+  --> StudentRoom roomId
+  o Integer counts
+}
 
-// transaction StudentSubmitTSRoom {
-//   --> Students student
-//   --> TSRoom roomId
-//   o String token
-// }
+transaction TeacherInvokeTSRoom {
+  --> Teachers teacher
+  --> TSRoom roomId
+  o Structure structure
+}
+
+transaction TeacherRevokeTSRoom {
+  --> Teachers teacher
+  --> TSRoom roomId
+  o Integer counts
+}
+
+transaction StudentInvokeTSRoom {
+  --> Students student
+  --> TSRoom roomId
+  o Structure structure
+} 
+
+transaction StudentRevokeTSRoom {
+  --> Students student
+  --> TSRoom roomId
+  o Integer counts
+}
+
+transaction AdminRevokeTeacherRoom {
+  --> Teachers teacher
+  --> TeacherRoom roomId
+  o Integer counts
+}
+
+transaction AdminRevokeStudentRoom {
+  --> Students student
+  --> StudentRoom roomId
+  o Integer counts
+}
+
+transaction AdminRevokeTeacherTSRoom {
+  --> Teachers teacher
+  --> TSRoom roomId
+  o Integer counts
+}
+
+transaction AdminRevokeStudentTSRoom {
+  --> Students student
+  --> TSRoom roomId
+  o Integer counts
+}
+
+transaction TeacherAddToken {
+  --> Students student
+  o Integer token
+}
+
+transaction AdminAddToken {
+  --> Students student
+  o Integer token
+}

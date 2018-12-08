@@ -109,9 +109,10 @@ const teachersFunc = async (request, counts) => {
     await participantRegistry.update(teachers);
 }
 
-const studentsFunc = async (request, counts) => {
+const studentsFunc = async (request, counts, token) => {
 
     const students = request.student;
+    students.token = token - 1;
     students.room.push(request.roomId.getIdentifier() + "#" + counts);
     const participantRegistry = await getParticipantRegistry(namespace + '.Students');
     await participantRegistry.update(students);
@@ -126,9 +127,10 @@ const teachersTSFunc = async (request, teacherCounts) => {
 
 }
 
-const studentsTSFunc = async (request, studentCounts) => {
+const studentsTSFunc = async (request, studentCounts, token) => {
 
     const students = request.student;
+    students.token = token - 1; 
     students.room.push(request.roomId.getIdentifier() + "#" + studentCounts);
     const participantRegistry = await getParticipantRegistry(namespace + '.Students');
     await participantRegistry.update(students);
@@ -152,7 +154,7 @@ const studentRoomRevoke = async (request, check, transaction_p) => {
     const studentRoom = request.roomId;
     studentRoom.matching.splice(check,1);
     studentRoom.structure.splice(check,1);
-    studentRoom.teacher.splice(check,1);
+    studentRoom.student.splice(check,1);
     studentRoom.timestamp = JSON.stringify(request.timestamp);
     studentRoom.transactionId = request.getIdentifier();
     studentRoom.transaction_p = transaction_p;
@@ -294,12 +296,13 @@ async function studentInvokeStudentRoom(request){
         transaction_p = request.roomId.transactionId;
     }
     const counts = request.roomId.counts;
+    const token = request.student.token;
     if (typeof studentRoom.structure == 'undefined') {
         await studentRoomFunc(request, counts, transaction_p);
-        await studentsFunc(request, counts);
+        await studentsFunc(request, counts, token);
     } else if (studentRoom.structure.length == 0) {
         await studentRoomFunc(request, counts, transaction_p);
-        await studentsFunc(request, counts);
+        await studentsFunc(request, counts, token);
     } else {
         let boolean = true;
         for (let i in studentRoom.structure) {
@@ -311,7 +314,7 @@ async function studentInvokeStudentRoom(request){
         }
         if (boolean) {
             await studentRoomFunc(request, counts, transaction_p);
-            await studentsFunc(request, counts);
+            await studentsFunc(request, counts, token);
         } else {
             throw new Error ("#### This datetime has already exsit. ####")
         }
@@ -403,12 +406,13 @@ async function studentInvokeTSRoom(request){
     }
     const counts = request.roomId.counts;
     const studentCounts = request.roomId.studentCounts;
+    const token = request.student.token;
     if (typeof tsRoom.structure == 'undefined') {
         await tsRoomStudentsFunc(request, counts, studentCounts, transaction_p);
-        await studentsTSFunc(request, studentCounts);
+        await studentsTSFunc(request, studentCounts, token);
     } else if (tsRoom.structure.length == 0) {
         await tsRoomStudentsFunc(request, counts, studentCounts, transaction_p);
-        await studentsTSFunc(request, studentCounts);
+        await studentsTSFunc(request, studentCounts, token);
     } else {
         let boolean = true;
         for (let i in tsRoom.studentStructure) {
@@ -420,7 +424,7 @@ async function studentInvokeTSRoom(request){
         }
         if (boolean) {
             await tsRoomStudentsFunc(request, counts, studentCounts, transaction_p);
-            await studentsTSFunc(request, studentCounts);
+            await studentsTSFunc(request, studentCounts, token);
         } else {
             throw new Error ("#### This datetime has already exsit. ####")
         }
@@ -488,3 +492,147 @@ async function studentRevokeTSRoom(request){
     }
 }
 
+/**
+ * @param {classroom.management.kmitl.AdminRevokeTeacherRoom} adminRevokeTeacherRoom
+ * @transaction
+ */
+async function adminRevokeTeacherRoom(request){
+
+    const teacherRoom = request.roomId;
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+    let check = 0;
+    let boolean = false;
+    for (let i = 0 ; i < teacherRoom.matching.length ; i++){
+        if (request.counts === teacherRoom.matching[i]){
+            check = i;
+            boolean = true;
+        }
+    }
+    if (boolean){
+        await teacherRoomRevoke(request, check, transaction_p);
+        await teachersRevoke(request);
+    } else {
+        throw new Error ("#### This room is available. ####")
+    }
+}
+
+/**
+ * @param {classroom.management.kmitl.AdminRevokeStudentRoom} adminRevokeStudentRoom
+ * @transaction
+ */
+async function adminRevokeStudentRoom(request){
+
+    const studentRoom = request.roomId;
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+
+    let check = 0;
+    let boolean = false;
+    for (let i = 0 ; i < studentRoom.matching.length ; i++){
+        if (request.counts === studentRoom.matching[i]){
+            check = i;
+            boolean = true;
+        }
+    }
+    if (boolean){
+        await studentRoomRevoke(request, check, transaction_p);
+        await studentsRevoke(request);
+    } else {
+        throw new Error ("#### This room is available. ####")
+    }
+}
+
+/**
+ * @param {classroom.management.kmitl.AdminRevokeTeacherTSRoom} adminRevokeTeacherTSRoom
+ * @transaction
+ */
+async function adminRevokeTeacherTSRoom(request){
+
+    const tsRoom = request.roomId;
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+
+    let check = 0;
+    let boolean = false;
+    for (let i = 0 ; i < tsRoom.teacherMatching.length ; i++){
+        if (request.counts === tsRoom.teacherMatching[i]){
+            check = i;
+            boolean = true;
+        }
+    }
+    if (boolean){
+        await tsRoomTeachersRevoke(request, check, transaction_p);
+        await teachersRevoke(request);
+    } else {
+        throw new Error ("#### This room is available. ####")
+    }
+}
+
+/**
+ * @param {classroom.management.kmitl.AdminRevokeStudentTSRoom} adminRevokeStudentTSRoom
+ * @transaction
+ */
+async function adminRevokeStudentTSRoom(request){
+
+    const tsRoom = request.roomId;
+    let transaction_p
+    if (!request.roomId.transaction_p) {
+        transaction_p = request.getIdentifier();
+    } else {
+        transaction_p = request.roomId.transactionId;
+    }
+
+    let check = 0;
+    let boolean = false;
+    for (let i = 0 ; i < tsRoom.studentMatching.length ; i++){
+        if (request.counts === tsRoom.studentMatching[i]){
+            check = i;
+            boolean = true;
+        }
+    }
+    if (boolean){
+        await tsRoomStudentsRevoke(request, check, transaction_p);
+        await studentsRevoke(request);
+    } else {
+        throw new Error ("#### This room is available. ####")
+    }
+}
+
+/**
+ * @param {classroom.management.kmitl.TeacherAddToken} teacherAddToken
+ * @transaction
+ */
+async function teacherAddToken(request) {
+
+    const students = request.student;
+    const token = request.student.token;
+    students.token = token + request.token;
+    const participantRegistry = await getParticipantRegistry(namespace + '.Students');
+    await participantRegistry.update(students);
+}
+
+/**
+ * @param {classroom.management.kmitl.AdminAddToken} adminAddToken
+ * @transaction
+ */
+async function adminAddToken(request) {
+
+    const students = request.student;
+    const token = request.student.token;
+    students.token = token + request.token;
+    const participantRegistry = await getParticipantRegistry(namespace + '.Students');
+    await participantRegistry.update(students);
+}
