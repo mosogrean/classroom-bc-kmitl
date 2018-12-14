@@ -14,6 +14,8 @@
                             </div>
                         @endif
 
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
+                        <a href="{{ route('admin.user.list') }}" class="btn btn-info" role="button">List account</a>
                         <a href="{{ route('admin.user.list.teacher') }}" class="btn btn-info" role="button">Teacher</a>
                         <a href="{{ route('admin.user.list.student') }}" class="btn btn-info" role="button">Student</a>
                             <div><br></div>
@@ -21,7 +23,7 @@
                                 <div class="container">
                                     <div><br></div>
                                     <h2>Teachers list</h2>
-                                    <p>ตารางแสดงข้อมูลอาจารย์ทั้งหมดที่อย่ในระบบ ซึ่งประกอบด้วย:</p>
+                                    <p>ตารางแสดงข้อมูลอาจารย์ทั้งหมดที่อยู่ในระบบ ซึ่งประกอบด้วย:</p>
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>

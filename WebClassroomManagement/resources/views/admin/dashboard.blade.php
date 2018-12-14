@@ -23,11 +23,26 @@
                                             {{ session('status') }}
                                         </div>
                                     @endif
-                                    <a href="{{ route('admin.user.register') }}" class="btn btn-info" role="button">register user</a>
-                                    <a href="{{ route('admin.user.list') }}" class="btn btn-info" role="button">list account</a>
+                                    <a href="{{ route('admin.user.register') }}" class="btn btn-info" role="button">Register user</a>
+                                    <a href="{{ route('admin.user.list') }}" class="btn btn-info" role="button">List account</a>
                                 </div>
-                    </div>
-                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">Classrooms</div>
+
+                                <div class="card-body">
+                                        @if (session('status'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
+                                        <a href="{{ route('admin.classroom.create') }}" class="btn btn-info" role="button">Classroom create</a>
+                                        <a href="{{ route('admin.classroom.list') }}" class="btn btn-info" role="button">Classroom list</a>
+
+
+                                </div>
+                            </div>
             </div>
         </div>
     </div>
