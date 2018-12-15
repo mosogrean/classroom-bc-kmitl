@@ -19,4 +19,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 require "web/auth.php";
 require "web/admin_route.php";
+require "web/student_route.php";
 
