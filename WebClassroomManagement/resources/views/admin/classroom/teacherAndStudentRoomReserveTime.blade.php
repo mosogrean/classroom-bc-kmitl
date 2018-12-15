@@ -14,7 +14,7 @@
                             </div>
                         @endif
 
-                        {{ $room }}<br>
+                        {{ $room }}<br>{{ $time }}<br>
                         <a href="{{ route('admin.classroom.list') }}" class="btn btn-info" role="button">Classroom list</a>
                         <a href="{{ route('admin.classroom.list.teacher_and_student_room.info.reserve', $room) }}" class="btn btn-info" role="button">Reserve</a>
 

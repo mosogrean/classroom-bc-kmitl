@@ -52,4 +52,34 @@ class ClassroomController extends Controller
     {
         return view('admin.classroom.teacherAndStudentRoomInfo', ['room' => $room]);
     }
+
+    public function teacherRoomReservePage($room)
+    {
+        return view('admin.classroom.teacherRoomReserve', ['room' => $room]);
+    }
+
+    public function studentRoomReservePage($room)
+    {
+        return view('admin.classroom.studentRoomReserve', ['room' => $room]);
+    }
+
+    public function teacherRoomReserveTime($room, $time)
+    {
+        return view('admin.classroom.teacherRoomReserveTime', compact(['room', 'time']));
+    }
+
+    public function studentRoomReserveTime($room, $time)
+    {
+        return view('admin.classroom.studentRoomReserveTime', compact(['room', 'time']));
+    }
+
+    public function teacherAndStudentRoomReservePage($room)
+    {
+        return view('admin.classroom.studentRoomReserve', ['room' => $room]);
+    }
+
+    public function teacherAndStudentRoomReserveTime($room, $time)
+    {
+        return view('admin.classroom.teacherAndStudentRoomReserveTime', compact(['room', 'time']));
+    }
 }
