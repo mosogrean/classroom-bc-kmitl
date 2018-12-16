@@ -15,30 +15,7 @@
 /**
  * Sample access control list.
  */
-rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
-    participant: "classroom.management.kmitl.SampleParticipant"
-    operation: READ
-    resource: "classroom.management.kmitl.*"
-    action: ALLOW
-}
 
-rule EverybodyCanSubmitTransactions {
-    description: "Allow all participants to submit transactions"
-    participant: "classroom.management.kmitl.SampleParticipant"
-    operation: CREATE
-    resource: "classroom.management.kmitl.SampleTransaction"
-    action: ALLOW
-}
-
-rule OwnerHasFullAccessToTheirAssets {
-    description: "Allow all participants full access to their assets"
-    participant(p): "classroom.management.kmitl.SampleParticipant"
-    operation: ALL
-    resource(r): "classroom.management.kmitl.SampleAsset"
-    condition: (r.owner.getIdentifier() === p.getIdentifier())
-    action: ALLOW
-}
 
 rule SystemACL {
   description:  "System ACL to permit all access"
