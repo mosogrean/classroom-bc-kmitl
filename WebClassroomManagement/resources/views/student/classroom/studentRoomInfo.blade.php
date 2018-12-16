@@ -26,9 +26,13 @@
                                         {{ session('status') }}
                                     </div>
                                 @endif
+
                             <a href="{{ route('student.classroom.student_room') }}" class="btn btn-info" role="button">Student Room</a>
                             <a href="{{ route('student.classroom.teacher_and_student_room') }}" class="btn btn-info" role="button">Teacher and Student Room</a>
 
+                            <br><br>
+
+                            {{ $room }}
 
                             </div>
                         </div>

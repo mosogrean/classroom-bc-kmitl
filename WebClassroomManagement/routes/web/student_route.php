@@ -7,3 +7,4 @@ Route::get('/student/dashboard/history','Student\HistoryController@index')->name
 Route::get('/student/dashboard/classroom','Student\ClassroomController@index')->name('student.classroom');
 Route::get('/student/dashboard/classroom/student_room','Student\ClassroomController@studentRoom')->name('student.classroom.student_room');
 Route::get('/student/dashboard/classroom/teacher_and_student_room','Student\ClassroomController@teacherAndStudentRoom')->name('student.classroom.teacher_and_student_room');
+Route::get('/student/dashboard/classroom/student_room/{room}','Student\ClassroomController@studentRoomInfo')->name('student.classroom.student_room.info');

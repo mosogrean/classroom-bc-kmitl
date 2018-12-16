@@ -21,10 +21,18 @@ class ClassroomController extends Controller
     {
         return  view('student.classroom.studentRoom');
     }
+
     public function teacherAndStudentRoom()
     {
         return  view('student.classroom.teacherAndStudentRoom');
     }
+
+    public function studentRoomInfo($room)
+    {
+        return view('student.classroom.studentRoomInfo', ['room' => $room]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
