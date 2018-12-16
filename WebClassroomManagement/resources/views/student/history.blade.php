@@ -21,8 +21,8 @@
                     <div class="card">
                         <div class="container">
                             <div><br></div>
-                            <h2>Student Recently Reserve</h2>
-                            <p>ข้อมูลการใช้งานล่าสุดของนักศึกษา:</p>
+                            <h2>Student history  table</h2>
+                            <p>ตารางแสดงข้อมูลการใช้งานนักศึกษา:</p>
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
@@ -30,8 +30,6 @@
                                     <th>Room reserve</th>
                                     <th>Date reserve</th>
                                     <th>Tokens left</th>
-                                    <th>Room key</th>
-                                    <th>Reserving status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -40,16 +38,12 @@
                                     <th>HM304</th>
                                     <th>15/12/2018,19.20</th>
                                     <th>30</th>
-                                    <th>YJ45a</th>
-                                    <th>Reserving</th>
                                 </tr>
                                 <tr>
                                     <th>17/12/2018,13.00-16.00</th>
-                                    <th>E303</th>
+                                    <th>HM304</th>
                                     <th>15/12/2018,16.49</th>
-                                    <th>30</th>
-                                    <th>Lm86o</th>
-                                    <th>Reserving</th>
+                                    <th>31</th>
                                 </tr>
 
                                 </tbody>
