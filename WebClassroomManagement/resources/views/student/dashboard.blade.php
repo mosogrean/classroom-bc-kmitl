@@ -15,6 +15,8 @@
                         @endif
                         <a href="{{ route('student.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
                         <a href="{{ route('student.history') }}" class="btn btn-info" role="button">History</a>
+                        <a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Classroom</a>
+
                     </div>
 
                     <div><br></div>
@@ -29,7 +31,6 @@
                                     <th>Time</th>
                                     <th>Room reserve</th>
                                     <th>Date reserve</th>
-                                    <th>Tokens left</th>
                                     <th>Room key</th>
                                     <th>Reserving status</th>
                                 </tr>
@@ -39,7 +40,6 @@
                                     <th>16/12/2018,13.00-16.00</th>
                                     <th>HM304</th>
                                     <th>15/12/2018,19.20</th>
-                                    <th>30</th>
                                     <th>YJ45a</th>
                                     <th>Reserving</th>
                                 </tr>
@@ -47,7 +47,6 @@
                                     <th>17/12/2018,13.00-16.00</th>
                                     <th>E303</th>
                                     <th>15/12/2018,16.49</th>
-                                    <th>30</th>
                                     <th>Lm86o</th>
                                     <th>Reserving</th>
                                 </tr>

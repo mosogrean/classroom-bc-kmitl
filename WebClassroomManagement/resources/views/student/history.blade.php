@@ -15,6 +15,7 @@
                         @endif
                         <a href="{{ route('student.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
                         <a href="{{ route('student.history') }}" class="btn btn-info" role="button">History</a>
+                        <a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Classroom</a>
                     </div>
 
                     <div><br></div>
