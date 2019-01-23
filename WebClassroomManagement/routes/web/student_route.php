@@ -11,3 +11,7 @@ Route::get('/student/dashboard/classroom/student_room/{room}','Student\Classroom
 Route::get('/student/dashboard/classroom/student_room/{room}/{time}','Student\ClassroomController@studentRoomTime')->name('student.classroom.student_room.info.time');
 
 Route::get('/student/dashboard/reserve','Student\ReserveController@index')->name('student.reserve');
+
+Route::get('/student/dashboard/classroom/teacher_and_student/{room}','Student\ClassroomController@teacherAndStudentRoomInfo')->name('student.classroom.teacher_and_student_room.info');
+Route::get('/student/dashboard/classroom/teacher_and_student/{room}/{time}','Student\ClassroomController@teacherAndStudentRoomTime')->name('student.classroom.teacher_and_student_room.info.time');
+

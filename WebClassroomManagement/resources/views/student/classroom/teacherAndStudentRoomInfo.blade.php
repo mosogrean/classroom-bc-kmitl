@@ -36,17 +36,17 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <th><a href="{{ route('student.classroom.student_room.info.time', [$room, "9.00-12.00"]) }}">9.00-12.00</a></th>
+                                            <th><a href="{{ route('student.classroom.teacher_and_student_room.info.time', [$room, "9.00-12.00"]) }}">9.00-12.00</a></th>
                                             <th>unavailable</th>
                                             <th><a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Edit</a></th>
                                         </tr>
                                         <tr>
-                                            <th><a href="{{ route('student.classroom.student_room.info.time', [$room, "13.00-16.00"]) }}">13.00-16.00</a></th>
+                                            <th><a href="{{ route('student.classroom.teacher_and_student_room.info.time', [$room, "13.00-16.00"]) }}">13.00-16.00</a></th>
                                             <th>unavailable</th>
                                             <th><a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Edit</a></th>
                                         </tr>
                                         <tr>
-                                            <th><a href="{{ route('student.classroom.student_room.info.time', [$room, "16.30-19.30"]) }}">16.30-19.30</a></th>
+                                            <th><a href="{{ route('student.classroom.teacher_and_student_room.info.time', [$room, "16.30-19.30"]) }}">16.30-19.30</a></th>
                                             <th>unavailable</th>
                                             <th><a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Edit</a></th>
                                         </tr>

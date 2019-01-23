@@ -37,6 +37,15 @@ class ClassroomController extends Controller
         return view('student.classroom.studentRoomTime', compact(['room', 'time']));
     }
 
+    public function teacherAndStudentRoomInfo($room)
+    {
+        return view('student.classroom.teacherAndStudentRoomInfo', ['room' => $room]);
+    }
+
+    public function teacherAndStudentRoomTime($room, $time)
+    {
+        return view('student.classroom.teacherAndStudentRoomTime', compact(['room', 'time']));
+    }
     /**
      * Show the form for creating a new resource.
      *

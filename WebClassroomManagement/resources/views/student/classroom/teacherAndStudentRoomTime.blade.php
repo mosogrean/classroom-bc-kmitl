@@ -18,14 +18,15 @@
                         <a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Classroom</a>
 
                         <br><br>
-                        Reserve Successfully
-                        <br><br>
-                        Your Key Room is '7M4Pk'
+                        {{$room}}<br>
+                        {{$time}}<br>
+
+                        <a href="{{ route('student.reserve') }}" class="btn btn-info" role="button">Reserve</a>
+
 
                     </div>
-
-
-
                 </div>
             </div>
+        </div>
+    </div>
 @endsection

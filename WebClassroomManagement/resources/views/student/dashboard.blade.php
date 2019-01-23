@@ -36,20 +36,31 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
+                                <tr>
+                                    <th>9.00-12.00</th>
+                                    <th>HM304</th>
+                                    <th>18/12/2018,14.54</th>
+                                    <th>7M4Pk</th>
+                                    <th>Reserving</th>
+                                </tr>
+
                                 <tr>
                                     <th>13.00-16.00</th>
-                                    <th>HM304</th>
+                                    <th>D513</th>
+                                    <th>15/12/2018,16.49</th>
+                                    <th>7b5CO</th>
+                                    <th>Reserving</th>
+                                </tr>
+
+                                <tr>
+                                    <th>16.30-19.30</th>
+                                    <th>E303</th>
                                     <th>15/12/2018,19.20</th>
                                     <th>YJ45a</th>
                                     <th>Reserving</th>
                                 </tr>
-                                <tr>
-                                    <th>13.00-16.00</th>
-                                    <th>E303</th>
-                                    <th>15/12/2018,16.49</th>
-                                    <th>Lm86o</th>
-                                    <th>Reserving</th>
-                                </tr>
+
 
                                 </tbody>
                             </table>
