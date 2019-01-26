@@ -1,6 +1,4 @@
 <?php
 
 
-Route::group(['middleware' => 'is_admin'], function () {
-
-});
+Route::get('/teacher/dashboard','Teacher\DashboardController@index')->name('teacher.dashboard');
