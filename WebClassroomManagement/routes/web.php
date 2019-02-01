@@ -22,3 +22,6 @@ require "web/admin_route.php";
 require "web/student_route.php";
 require "web/teacher_route.php";
 
+Route::get('/teacher-dashboard', function (){
+    return view('teacher_n.dashboard');
+});
