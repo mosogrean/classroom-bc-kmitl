@@ -25,3 +25,16 @@ require "web/teacher_route.php";
 Route::get('/teacher-dashboard', function (){
     return view('teacher_n.dashboard');
 });
+
+Route::get('/teacher-troom', function (){
+   return view('teacher_n.troom');
+});
+
+Route::get('/teacher-reserve', function (){
+   return view('teacher_n.reroom');
+});
+
+Route::get('/teacher-reserve/calendar', function (\Illuminate\Http\Request $request){
+    dd($request);
+    //  return view('teacher_n.reroom');
+})->name('t-res-date');
