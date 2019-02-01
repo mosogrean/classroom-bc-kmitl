@@ -13,53 +13,40 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <a href="{{ route('teacher.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
-                        <a href="{{ route('teacher.history') }}" class="btn btn-info" role="button">History</a>
-                        <a href="{{ route('teacher.classroom') }}" class="btn btn-info" role="button">Classroom</a>
+                            <a href="{{ route('teacher.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
+                            <a href="{{ route('teacher.history') }}" class="btn btn-info" role="button">History</a>
+                            <a href="{{ route('teacher.classroom') }}" class="btn btn-info" role="button">Classroom</a>
+
                     </div>
 
                     <div><br></div>
                     <div class="card">
                         <div class="container">
                             <div><br></div>
-                            <h2>Teacher Recently Reserve</h2>
-                            <p>ข้อมูลการใช้งานล่าสุดของอาจารย์:</p>
+                            <h2>Teacher History  Table</h2>
+                            <p>ตารางแสดงข้อมูลการใช้งานนอาจารย์:</p>
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th>Time</th>
                                     <th>Room reserve</th>
                                     <th>Date reserve</th>
-                                    <th>Room key</th>
-                                    <th>Reserving status</th>
+                                    <th>Tokens left</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <tr>
-                                    <th>9.00-12.00</th>
+                                    <th>16/12/2018,13.00-16.00</th>
                                     <th>HM304</th>
-                                    <th>18/12/2018,14.54</th>
-                                    <th>7M4Pk</th>
-                                    <th>Reserving</th>
-                                </tr>
-
-                                <tr>
-                                    <th>13.00-16.00</th>
-                                    <th>D513</th>
-                                    <th>15/12/2018,16.49</th>
-                                    <th>7b5CO</th>
-                                    <th>Reserving</th>
-                                </tr>
-
-                                <tr>
-                                    <th>16.30-19.30</th>
-                                    <th>E303</th>
                                     <th>15/12/2018,19.20</th>
-                                    <th>YJ45a</th>
-                                    <th>Reserving</th>
+                                    <th>30</th>
                                 </tr>
-
+                                <tr>
+                                    <th>17/12/2018,13.00-16.00</th>
+                                    <th>HM304</th>
+                                    <th>15/12/2018,16.49</th>
+                                    <th>31</th>
+                                </tr>
 
                                 </tbody>
                             </table>
