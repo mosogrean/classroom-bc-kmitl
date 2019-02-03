@@ -7,29 +7,16 @@ use App\Http\Controllers\Controller;
 
 class ClassroomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return  view('teacher.classroom');
-    }
+
 
     public function teacherRoom()
     {
         return  view('teacher.classroom.teacherRoom');
     }
 
-    public function teacherAndStudentRoom()
+    public function calendar($room)
     {
-        return  view('teacher.classroom.teacherAndStudentRoom');
-    }
-
-    public function teacherRoomInfo($room)
-    {
-        return view('teacher.classroom.teacherRoomInfo', ['room' => $room]);
+        return view('teacher.classroom.calendar', ['room' => $room]);
     }
 
     public function teacherRoomTime($room, $time)

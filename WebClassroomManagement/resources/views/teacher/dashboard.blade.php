@@ -1,70 +1,77 @@
-@extends('layouts.app-user')
+@extends('layouts.layout-teacher')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Teacher role</div>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </div><!--/.row-->
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <a href="{{ route('teacher.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
-                        <a href="{{ route('teacher.history') }}" class="btn btn-info" role="button">History</a>
-                        <a href="{{ route('teacher.classroom') }}" class="btn btn-info" role="button">Classroom</a>
-                    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+    </div>
+    <div class="panel panel-default articles">
+        <div class="panel-heading">
+            Teacher Recently Reserve
+            <ul class="pull-right ">
 
-                    <div><br></div>
-                    <div class="card">
-                        <div class="container">
-                            <div><br></div>
-                            <h2>Teacher Recently Reserve</h2>
-                            <p>ข้อมูลการใช้งานล่าสุดของอาจารย์:</p>
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Room reserve</th>
-                                    <th>Date reserve</th>
-                                    <th>Room key</th>
-                                    <th>Reserving status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+            </ul>
+            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body articles-container">
+            <div class="article border-bottom">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">18</div>
+                            <div class="text-muted">12/2018</div>
+                        </div>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">HM304</a></h4>
+                            <p>รหัสเข้าใช้งาน: 7M4Pk</p>
 
-                                <tr>
-                                    <th>9.00-12.00</th>
-                                    <th>HM304</th>
-                                    <th>18/12/2018,14.54</th>
-                                    <th>7M4Pk</th>
-                                    <th>Reserving</th>
-                                </tr>
-
-                                <tr>
-                                    <th>13.00-16.00</th>
-                                    <th>D513</th>
-                                    <th>15/12/2018,16.49</th>
-                                    <th>7b5CO</th>
-                                    <th>Reserving</th>
-                                </tr>
-
-                                <tr>
-                                    <th>16.30-19.30</th>
-                                    <th>E303</th>
-                                    <th>15/12/2018,19.20</th>
-                                    <th>YJ45a</th>
-                                    <th>Reserving</th>
-                                </tr>
-
-
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
+
+            <div class="article border-bottom">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-2 date">
+                            <div class="large">28</div>
+                            <div class="text-muted">Jun</div>
+                        </div>
+                        <div class="col-xs-10 col-md-10">
+                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
+
+            <div class="article">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-2 date">
+                            <div class="large">24</div>
+                            <div class="text-muted">Jun</div>
+                        </div>
+                        <div class="col-xs-10 col-md-10">
+                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
+        </div>
+    </div><!--End .articles-->
+
 @endsection

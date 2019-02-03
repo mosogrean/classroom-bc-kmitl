@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/datepicker3.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
+    <script src="{{ asset('js/html5shiv.js') }}" ></script>
+    <script src="{{ asset('js/respond.min.js') }}" ></script>
     <![endif]-->
 </head>
 <body>
@@ -94,12 +94,12 @@
     </div>
     <div class="divider"></div>
     <ul class="nav menu">
-        <li><a href="{{ route('teacher_n.dashboard') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+        <li><a href="{{ route('teacher.dashboard') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
         <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
                 <em class="fa fa-navicon">&nbsp;</em> Classroom <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
             <ul class="children collapse" id="sub-item-1">
-                <li><a class="" href="{{ route('teacher_n.troom') }}">
+                <li><a class="" href="{{ route('teacher.classroom.teacher') }}">
                         <span class="fa fa-arrow-right">&nbsp;</span> Teacher
                     </a></li>
                 <li><a class="" href="#">
@@ -121,14 +121,15 @@
 
 </div>	<!--/.main-->
 
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/chart.min.js"></script>
-<script src="js/chart-data.js"></script>
-<script src="js/easypiechart.js"></script>
-<script src="js/easypiechart-data.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{ asset('js/jquery-1.11.1.min.js') }}" ></script>
+<script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+<script src="{{ asset('js/chart.min.js') }}" ></script>
+<script src="{{ asset('js/chart-data.js') }}" ></script>
+<script src="{{ asset('js/easypiechart.js') }}" ></script>
+<script src="{{ asset('js/easypiechart-data.js') }}" ></script>
+<script src="{{ asset('js/bootstrap-datepicker.js') }}" ></script>
+<script src="{{ asset('js/custom.js') }}" ></script>
+<
 <script>
     window.onload = function () {
         var chart1 = document.getElementById("line-chart").getContext("2d");

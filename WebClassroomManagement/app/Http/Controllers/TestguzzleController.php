@@ -10,7 +10,7 @@ class TestguzzleController extends Controller
     public function testAPIGet() {
         $blockchainConnector = new BlockChainConnection();
         // $name = "elza";
-        $data = $blockchainConnector->getMethod("FACTORY", "/api/","Sale");
+        $data = $blockchainConnector->getMethod("TEACHER", "/api/","Order/15471");
         dd($data);
     }
 
@@ -23,7 +23,7 @@ class TestguzzleController extends Controller
             "username" => $newName,
             "email" => "hi@onespace.co.th",
         ];
-        $res = $blockchainConnector->postMethod("FACTORY", "/api/", "Sale", $data);
+        $res = $blockchainConnector->postMethod("TEACHER", "/api/", "Order/15471", $data);
         dd($res);
     }
 

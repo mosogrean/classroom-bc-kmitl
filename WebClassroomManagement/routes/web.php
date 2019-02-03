@@ -30,7 +30,7 @@ Route::get('/teacher-troom', function (){
    return view('teacher_n.troom');
 })->name('teacher_n.troom');
 
-Route::get('/teacher-reserve', function(){
+Route::get('/teacher-reserv', function(){
    return view('teacher_n.reroom');
 })->name('teacher_n.reroom');
 
