@@ -19,8 +19,10 @@ class ClassroomController extends Controller
         return view('teacher.classroom.calendar', ['room' => $room]);
     }
 
-    public function teacherRoomTime($room, $time)
+    public function timePicker($room, Request $request)
     {
+        dump($room);
+        dd($request->all());
         return view('teacher.classroom.teacherRoomTime', compact(['room', 'time']));
     }
 
