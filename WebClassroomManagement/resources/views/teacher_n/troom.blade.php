@@ -24,21 +24,7 @@
                     <em class="fa fa-cogs"></em>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li>
-                        <ul class="dropdown-settings">
-                            <li><a href="#">
-                                    <em class="fa fa-cog"></em> Settings 1
-                                </a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">
-                                    <em class="fa fa-cog"></em> Settings 2
-                                </a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">
-                                    <em class="fa fa-cog"></em> Settings 3
-                                </a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </li>
         </ul>
@@ -52,7 +38,7 @@
                         <div class="text-muted">Room Id</div>
                     </div>
                     <div class="col-xs-9 col-md-9">
-                        <h4><a href="#">Reserve</a></h4>
+                        <h4><a href="{{ route('teacher_n.reroom') }}">Reserve & Edit</a></h4>
                         <p>ที่ตั้ง: อาคาร7ชั้น ชั้น3 คณะวิศวกรรมศาสตร์ KMITL</p>
 
                     </div>
