@@ -12,40 +12,28 @@ class ClassroomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return  view('student.classroom');
-    }
-
     public function studentRoom()
     {
         return  view('student.classroom.studentRoom');
     }
 
+    public function calendar($room)
+    {
+        return view('student.classroom.calendar', ['room' => $room]);
+    }
+
+    public function timePicker($room, Request $request)
+    {
+        dump($room);
+        dd($request->all());
+        return view('student.classroom.teacherRoomTime', compact(['room', 'time']));
+    }
+
     public function teacherAndStudentRoom()
     {
-        return  view('student.classroom.teacherAndStudentRoom');
+        return view('student.classroom.teacherAndStudentRoom');
     }
 
-    public function studentRoomInfo($room)
-    {
-        return view('student.classroom.studentRoomInfo', ['room' => $room]);
-    }
-
-    public function studentRoomTime($room, $time)
-    {
-        return view('student.classroom.studentRoomTime', compact(['room', 'time']));
-    }
-
-    public function teacherAndStudentRoomInfo($room)
-    {
-        return view('student.classroom.teacherAndStudentRoomInfo', ['room' => $room]);
-    }
-
-    public function teacherAndStudentRoomTime($room, $time)
-    {
-        return view('student.classroom.teacherAndStudentRoomTime', compact(['room', 'time']));
-    }
     /**
      * Show the form for creating a new resource.
      *

@@ -17,7 +17,7 @@
     <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="background:#337ab7">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="background:#ff944d">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
@@ -94,13 +94,13 @@
     </div>
     <div class="divider"></div>
     <ul class="nav menu">
-        <li><a href="{{ route('teacher.dashboard') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+        <li><a href="{{ route('student.dashboard') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
         <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
                 <em class="fa fa-navicon">&nbsp;</em> Classroom <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
             </a>
             <ul class="children collapse" id="sub-item-1">
-                <li><a class="" href="{{ route('teacher.classroom.teacher') }}">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Teacher
+                <li><a class="" href="{{ route('student.classroom.student') }}">
+                        <span class="fa fa-arrow-right">&nbsp;</span> Student
                     </a></li>
                 <li><a class="" href="{{ route('teacher.classroom.teacherAndStudent') }}">
                         <span class="fa fa-arrow-right">&nbsp;</span> Teacher & Student
