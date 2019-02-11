@@ -17,6 +17,153 @@
  */
 
 
+
+
+//-----------------------------------------------Teacher-------------------------------------------------------
+
+rule TeacherCanSeeTeacher {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: READ, CREATE, UPDATE
+  resource: "classroom.management.kmitl.Teachers"
+  //condition: (p.getIdentifier() === r.position.getIdentifier())
+  action: ALLOW
+}
+
+/*rule TeacherCanSeePositions {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: READ
+  resource: "classroom.management.kmitl.Positions"
+  action: ALLOW
+}*/
+
+rule TeacherCanSeeStudent {
+   description: ""
+   participant: "classroom.management.kmitl.Positions#Teacher"
+   operation: READ
+   resource: "classroom.management.kmitl.Students"
+   action: ALLOW
+ }
+
+rule TeacherCanSeeTeacherRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: READ, UPDATE
+  resource: "classroom.management.kmitl.TeacherRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanSeeTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: READ, UPDATE
+  resource: "classroom.management.kmitl.TSRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanInvokeTeacherRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherInvokeTeacherRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanRevokeTeacherRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherRevokeTeacherRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanInvokeTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherInvokeTSRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanRevokeTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherRevokeTSRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanAddToken {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherAddToken"
+  action: ALLOW 
+}
+
+//-----------------------------------------------Student-------------------------------------------------------
+
+rule StudentCanSeeStudents {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: READ, CREATE, UPDATE
+  resource: "classroom.management.kmitl.Students"
+  //condition: (p.getIdentifier() == r.position.getIdentifier())
+  action: ALLOW 
+}
+
+rule StudentCanSeeStudentRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: READ, UPDATE
+  resource: "classroom.management.kmitl.StudentRoom"
+  action: ALLOW 
+}
+
+rule StudentCanSeeTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: READ, UPDATE
+  resource: "classroom.management.kmitl.TSRoom"
+  action: ALLOW 
+}
+
+rule StudentCanInvokeStudentRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentInvokeStudentRoom"
+  action: ALLOW 
+}
+
+rule StudentCanRevokeStudentRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentRevokeStudentRoom"
+  action: ALLOW 
+}
+
+rule StudentCanInvokeTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentInvokeTSRoom"
+  action: ALLOW 
+}
+
+rule StudentCanRevokeTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentRevokeTSRoom"
+  action: ALLOW 
+}
+
+
+//-------------------------------------------------------------------------------------------------------------
+
 rule SystemACL {
   description:  "System ACL to permit all access"
   participant: "org.hyperledger.composer.system.Participant"

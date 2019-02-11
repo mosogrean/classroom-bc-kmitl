@@ -18,19 +18,23 @@
 
 namespace classroom.management.kmitl
 
+participant Positions identified by position {
+  o String position
+}
+
 participant Admins identified by adminId {
   o String adminId
   o String name
+  --> Positions position
   o String tel
-  o String position
   o String email
 }
 
 participant Teachers identified by teacherId {
   o String teacherId
   o String name
+  --> Positions position
   o String tel
-  o String position
   o String email
   o String[] room 
 }
@@ -38,8 +42,12 @@ participant Teachers identified by teacherId {
 participant Students identified by studentId {
   o String studentId
   o String name
+  --> Positions position
+  o String faculty
+  o String major
+  o String year
+  o String section
   o String tel
-  o String position
   o String email
   o Integer token default = 2 
   o String[] room 
@@ -54,7 +62,7 @@ concept Structure {
 asset TeacherRoom identified by roomId {
   o String roomId
   o Integer counts default = 0
-  o Integer[] matching
+  o Integer[] matching 
   --> Teachers[] teacher optional
   o Structure[] structure optional
   o String timestamp optional
@@ -65,7 +73,7 @@ asset TeacherRoom identified by roomId {
 asset StudentRoom identified by roomId {
   o String roomId
   o Integer counts default = 0
-  o Integer[] matching
+  o Integer[] matching 
   --> Students[] student optional
   o Structure[] structure optional
   o String timestamp optional
