@@ -7,7 +7,7 @@
                     <em class="fa fa-home"></em>
                 </a></li>
             <li class="active">classroom</li>
-            <li class="active">teacher room</li>
+            <li class="active">teacher and student room</li>
         </ol>
     </div><!--/.row-->
 

@@ -102,7 +102,7 @@
                 <li><a class="" href="{{ route('student.classroom.student') }}">
                         <span class="fa fa-arrow-right">&nbsp;</span> Student
                     </a></li>
-                <li><a class="" href="{{ route('teacher.classroom.teacherAndStudent') }}">
+                <li><a class="" href="{{ route('student.classroom.teacherAndStudent') }}">
                         <span class="fa fa-arrow-right">&nbsp;</span> Teacher & Student
                     </a></li>
             </ul>

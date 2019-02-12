@@ -1,72 +1,84 @@
-@extends('layouts.app-user')
+@extends('layouts.layout-student')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Student role</div>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">classroom</li>
+            <li class="active">teacher and student room</li>
+        </ol>
+    </div><!--/.row-->
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <a href="{{ route('student.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
-                        <a href="{{ route('student.history') }}" class="btn btn-info" role="button">History</a>
-                        <a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Classroom</a>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Teacher And Student Room</h1>
+        </div>
+    </div>
+    <div class="panel panel-default articles">
+        <div class="panel-heading">
+            Lists
+            <ul class="pull-right panel-settings panel-button-tab-right">
+                <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+                        <em class="fa fa-cogs"></em>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
 
+                    </ul>
+                </li>
+            </ul>
+            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body articles-container">
+            <div class="article border-bottom">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">E704</div>
+                            <div class="text-muted">Room Id</div>
+                        </div>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="{{ route('student.calendar', "E704") }}">Reserve & Edit</a></h4>
+                            <p>ที่ตั้ง: อาคาร12ชั้น ชั้น7 คณะวิศวกรรมศาสตร์ KMITL</p>
 
-                        <div class="card-body">
-                            <div class="card-header">Classroom</div>
-                            <div class="card-body">
-                                @if (session('status'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('status') }}
-                                    </div>
-                                @endif
-
-                            <a href="{{ route('student.classroom.student_room') }}" class="btn btn-info" role="button">Student Room</a>
-                            <a href="{{ route('student.classroom.teacher_and_student_room') }}" class="btn btn-info" role="button">Teacher and Student Room</a>
-
-                                    <div><br></div>
-                                    <div class="card">
-                                        <div class="container">
-                                            <div><br></div>
-                                            <h2>Teacher and Student Rooms list</h2>
-                                            <p>ตารางแสดงข้อมูลจองห้องเรียนสำหรับนักศึกษาทและอาจารย์ทั้งหมดที่อยู่ในระบบ ซึ่งประกอบด้วย:</p>
-                                            <table class="table table-hover">
-                                                <thead>
-                                                <tr>
-                                                    <th>Room ID</th>
-                                                    <th>Adress</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <th><a href="{{ route('student.classroom.teacher_and_student_room.info', "E104") }}">E104</a></th>
-                                                    <th>อาคาร7ชั้น ชั้น1 คณะวิศวกรรมศาสตร์ KMITL</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="{{ route('student.classroom.teacher_and_student_room.info', "E409") }}">E409</a></th>
-                                                    <th>อาคาร12ชั้น ชั้น4 คณะวิศวกรรมศาสตร์ KMITL</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="{{ route('student.classroom.teacher_and_student_room.info', "C109") }}">C109</a></th>
-                                                    <th>อาคารพระเทพฯ ชั้น1 คณะวิศวกรรมศาสตร์ KMITL</th>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                    </div>
-
-                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
+
+            <div class="article border-bottom">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-2 date">
+                            <div class="large">28</div>
+                            <div class="text-muted">Jun</div>
+                        </div>
+                        <div class="col-xs-10 col-md-10">
+                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
+
+            <div class="article">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-2 col-md-2 date">
+                            <div class="large">24</div>
+                            <div class="text-muted">Jun</div>
+                        </div>
+                        <div class="col-xs-10 col-md-10">
+                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
         </div>
-    </div>
+    </div><!--End .articles-->
+
 @endsection
