@@ -1,56 +1,77 @@
-@extends('layouts.app-user')
+@extends('layouts.layout-student')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Student role</div>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">History</li>
+        </ol>
+    </div><!--/.row-->
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <a href="{{ route('student.dashboard') }}" class="btn btn-info" role="button">Dashboard</a>
-                        <a href="{{ route('student.history') }}" class="btn btn-info" role="button">History</a>
-                        <a href="{{ route('student.classroom') }}" class="btn btn-info" role="button">Classroom</a>
-                    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">History</h1>
+        </div>
+    </div>
+    <div class="panel panel-default articles">
+        <div class="panel-heading">
+            Student Uses History
+            <ul class="pull-right ">
 
-                    <div><br></div>
-                    <div class="card">
-                        <div class="container">
-                            <div><br></div>
-                            <h2>Student history  table</h2>
-                            <p>ตารางแสดงข้อมูลการใช้งานนักศึกษา:</p>
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Room reserve</th>
-                                    <th>Date reserve</th>
-                                    <th>Tokens left</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th>16/12/2018,13.00-16.00</th>
-                                    <th>HM304</th>
-                                    <th>15/12/2018,19.20</th>
-                                    <th>30</th>
-                                </tr>
-                                <tr>
-                                    <th>17/12/2018,13.00-16.00</th>
-                                    <th>HM304</th>
-                                    <th>15/12/2018,16.49</th>
-                                    <th>31</th>
-                                </tr>
+            </ul>
+            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body articles-container">
 
-                                </tbody>
-                            </table>
+            <div class="article border-bottom" style="background:#99ccff">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">25</div>
+                            <div class="text-muted">1/2019</div>
+                        </div>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">HM303</a></h4>
+                            <p>รหัสเข้าใช้งาน: 66L9K</p>
+
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
+
+            <div class="article border-bottom" style="background:#ff4d4d">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">25</div>
+                            <div class="text-muted">1/2019</div>
+                        </div>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">HM303</a></h4>
+                            <p>รหัสเข้าใช้งาน: 66L9K</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
+
+            <div class="article border-bottom" style="background:#66ff99">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">25</div>
+                            <div class="text-muted">1/2019</div>
+                        </div>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">HM303</a></h4>
+                            <p>รหัสเข้าใช้งาน: 66L9K</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div><!--End .article-->
 @endsection

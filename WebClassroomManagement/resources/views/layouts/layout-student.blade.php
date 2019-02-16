@@ -108,7 +108,7 @@
             </ul>
         </li>
         <li><a href="JoinsClass.html"><em class="fa fa-toggle-off">&nbsp;</em> Join Class</a></li>
-        <li><a href="History.html"><em class="fa fa-clone">&nbsp;</em> History</a></li>
+        <li><a href="{{ route('student.history') }}">&nbsp;</em> History</a></li>
 
         <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
     </ul>

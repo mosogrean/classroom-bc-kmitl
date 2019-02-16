@@ -41,23 +41,6 @@
                 <div class="clear"></div>
             </div><!--End .article-->
 
-            <div class="article border-bottom" style="background:#ff4d4d">
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-3 col-md-3 date">
-                            <div class="large">25</div>
-                            <div class="text-muted">1/2019</div>
-                        </div>
-                        <div class="col-xs-9 col-md-9">
-                            <h4><a href="#">HM303</a></h4>
-                            <p>รหัสเข้าใช้งาน: 66L9K</p>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div><!--End .article-->
-
             <div class="article border-bottom" style="background:#66ff99">
                 <div class="col-xs-12">
                     <div class="row">
