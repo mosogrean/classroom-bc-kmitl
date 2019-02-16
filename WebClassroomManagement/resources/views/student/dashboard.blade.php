@@ -23,7 +23,8 @@
             </ul>
             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
         <div class="panel-body articles-container">
-            <div class="article border-bottom">
+
+            <div class="article border-bottom" style="background:#99ccff">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
@@ -40,38 +41,37 @@
                 <div class="clear"></div>
             </div><!--End .article-->
 
-            <div class="article border-bottom">
+            <div class="article border-bottom" style="background:#ff4d4d">
                 <div class="col-xs-12">
                     <div class="row">
-                        <div class="col-xs-2 col-md-2 date">
-                            <div class="large">28</div>
-                            <div class="text-muted">Jun</div>
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">25</div>
+                            <div class="text-muted">1/2019</div>
                         </div>
-                        <div class="col-xs-10 col-md-10">
-                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">HM303</a></h4>
+                            <p>รหัสเข้าใช้งาน: 66L9K</p>
+
                         </div>
                     </div>
                 </div>
                 <div class="clear"></div>
             </div><!--End .article-->
 
-            <div class="article">
+            <div class="article border-bottom" style="background:#66ff99">
                 <div class="col-xs-12">
                     <div class="row">
-                        <div class="col-xs-2 col-md-2 date">
-                            <div class="large">24</div>
-                            <div class="text-muted">Jun</div>
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">25</div>
+                            <div class="text-muted">1/2019</div>
                         </div>
-                        <div class="col-xs-10 col-md-10">
-                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">HM303</a></h4>
+                            <p>รหัสเข้าใช้งาน: 66L9K</p>
+
                         </div>
                     </div>
                 </div>
                 <div class="clear"></div>
             </div><!--End .article-->
-        </div>
-    </div><!--End .articles-->
-
 @endsection

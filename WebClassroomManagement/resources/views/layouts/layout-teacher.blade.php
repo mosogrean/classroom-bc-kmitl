@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="{{ route('teacher.dashboard') }}"><em class="fa fa-dashboard">KMITL</a>
+            <a class="navbar-brand" href="#">KMITL</a>
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                         <em class="fa fa-envelope"></em><span class="label label-danger">15</span>
@@ -107,10 +107,8 @@
                     </a></li>
             </ul>
         </li>
-        <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-        <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-        <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-        <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
+        <li><a href="JoinsClass.html"><em class="fa fa-toggle-off">&nbsp;</em> Join Class</a></li>
+        <li><a href="History.html"><em class="fa fa-clone">&nbsp;</em> History</a></li>
 
         <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
     </ul>

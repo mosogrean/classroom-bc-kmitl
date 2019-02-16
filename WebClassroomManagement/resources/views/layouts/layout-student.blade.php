@@ -87,8 +87,8 @@
             <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
         </div>
         <div class="profile-usertitle">
-            <div class="profile-usertitle-name">Username</div>
-            <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+            <div class="profile-usertitle-name"> <li><a href="{{ route('student.dashboard') }}">58010187</a></li></div>
+            <div class="profile-usertitle-status"><span class="indicator label-success"></span>STUDENT</div>
         </div>
         <div class="clear"></div>
     </div>
@@ -107,10 +107,8 @@
                     </a></li>
             </ul>
         </li>
-        <li><a href="widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-        <li><a href="charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-        <li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-        <li><a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
+        <li><a href="JoinsClass.html"><em class="fa fa-toggle-off">&nbsp;</em> Join Class</a></li>
+        <li><a href="History.html"><em class="fa fa-clone">&nbsp;</em> History</a></li>
 
         <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
     </ul>
