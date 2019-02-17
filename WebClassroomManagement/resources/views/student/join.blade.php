@@ -6,18 +6,18 @@
             <li><a href="#">
                     <em class="fa fa-home"></em>
                 </a></li>
-            <li class="active">Dashboard</li>
+            <li class="active">Join Class</li>
         </ol>
     </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">Join Class</h1>
         </div>
     </div>
     <div class="panel panel-default articles">
         <div class="panel-heading">
-            Student Recently Reserve
+            Select class to join
             <ul class="pull-right ">
 
             </ul>
@@ -32,7 +32,7 @@
                             <div class="text-muted">1/2019</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.dashboard.room', "HM303") }}">HM303</a></h4>
+                            <h4><a href="#">HM303</a></h4>
                             <p>รหัสเข้าใช้งาน: 66L9K</p>
 
                         </div>
@@ -49,7 +49,7 @@
                             <div class="text-muted">1/2019</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.dashboard.room', "HM303") }}">HM303</a></h4>
+                            <h4><a href="#">HM303</a></h4>
                             <p>รหัสเข้าใช้งาน: 66L9K</p>
 
                         </div>

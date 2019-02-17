@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class DashboardController extends Controller
+class JoinController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('student.dashboard');
+        return view('student.join');
     }
-
-    public function roomInfo($room)
-    {
-        return view('student.dashboard.room', ['room' => $room]);
-    }
-
 
     /**
      * Show the form for creating a new resource.

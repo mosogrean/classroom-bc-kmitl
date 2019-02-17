@@ -1,27 +1,46 @@
 @extends('layouts.layout-student')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Student Profile</div>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">Profile</li>
+        </ol>
+    </div><!--/.row-->
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        <ul class="list-group">
-                            <li class="list-group-item active">Student ID</li>
-                            <li class="list-group-item">Name</li>
-                            <li class="list-group-item">Tel.</li>
-                            <li class="list-group-item">E-mail</li>
-                            <li class="list-group-item">Token</li>
-                            <li class="list-group-item">Room</li>
-                        </ul>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Profile</h1>
+        </div>
+    </div>
+    <div class="panel panel-default articles">
+        <div class="panel-heading">
+            Student Profile
+            <ul class="pull-right ">
+
+            </ul>
+            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body articles-container">
+
+            <div class="card-body">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
                     </div>
-                </div>
+                @endif
+                <ul class="list-group">
+                    <li class="list-group-item">Student ID</li>
+                    <li class="list-group-item">Name</li>
+                    <li class="list-group-item">Tel.</li>
+                    <li class="list-group-item">E-mail</li>
+                    <li class="list-group-item">Token</li>
+                    <li class="list-group-item">Room</li>
+                </ul>
             </div>
-@endsection
+
+            <button type="edit" class="btn btn-default btn-md pull-right">Edit</button>
+
+            @endsection
+
