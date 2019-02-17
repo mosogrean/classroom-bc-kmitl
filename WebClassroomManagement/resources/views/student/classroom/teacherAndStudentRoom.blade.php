@@ -18,16 +18,8 @@
     </div>
     <div class="panel panel-default articles">
         <div class="panel-heading">
-            Lists
-            <ul class="pull-right panel-settings panel-button-tab-right">
-                <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-                        <em class="fa fa-cogs"></em>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
+                Teacher And Student Room Info
 
-                    </ul>
-                </li>
-            </ul>
             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
         <div class="panel-body articles-container">
             <div class="article border-bottom">

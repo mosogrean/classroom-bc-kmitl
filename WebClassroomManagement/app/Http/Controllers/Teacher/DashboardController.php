@@ -17,6 +17,11 @@ class DashboardController extends Controller
         return view('teacher.dashboard');
     }
 
+    public function roomInfo($room)
+    {
+        return view('teacher.dashboard.room', ['room' => $room]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

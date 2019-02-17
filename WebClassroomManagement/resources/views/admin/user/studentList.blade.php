@@ -44,7 +44,7 @@
                                             <th>30</th>
                                         </tr>
                                         <tr>
-                                            <td><a href="{{ route('admin.user.list.student.info', "58010211") }}">58010211</a></td>
+                                            <td><a href="{{ route('dashboard', "58010211") }}">58010211</a></td>
                                             <td>เจษฎา ธระสวัสดิ์</td>
                                             <td>นักศึกษาชั้นปีที่ 4</td>
                                             <th>4</th>

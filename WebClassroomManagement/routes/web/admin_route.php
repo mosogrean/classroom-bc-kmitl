@@ -3,13 +3,13 @@
 
 Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/admin/dashboard','Admin\DashboardController@index')->name('admin.dashboard');
-    Route::get('/admin/user/register','Admin\UserController@registerPage')->name('admin.user.register');
-    Route::post('admin//user/register/store', 'Admin\UserController@registerStore')->name('admin.user.register.store');
-    Route::get('/admin/user/list', 'Admin\UserController@listPage')->name('admin.user.list');
-    Route::get('/admin/user/list/teacher', 'Admin\UserController@teacherListPage')->name('admin.user.list.teacher');
-    Route::get('/admin/user/list/student', 'Admin\UserController@studentListPage')->name('admin.user.list.student');
-    Route::get('/admin/user/list/teacher/{id}', 'Admin\UserController@teacherInfo')->name('admin.user.list.teacher.info');
-    Route::get('/admin/user/list/student/{id}', 'Admin\UserController@studentInfo')->name('admin.user.list.student.info');
+    Route::get('/admin/dashboard/register','Admin\UserController@registerPage')->name('admin.dashboard.register');
+    Route::post('admin//dashboard/register/store', 'Admin\UserController@registerStore')->name('admin.dashboard.register.store');
+    Route::get('/admin/dashboard/list', 'Admin\UserController@listPage')->name('admin.dashboard.list');
+    Route::get('/admin/dashboard/list/teacher', 'Admin\UserController@teacherListPage')->name('admin.dashboard.list.teacher');
+    Route::get('/admin/dashboard/list/student', 'Admin\UserController@studentListPage')->name('admin.dashboard.list.student');
+    Route::get('/admin/dashboard/list/teacher/{id}', 'Admin\UserController@teacherInfo')->name('admin.dashboard.list.teacher.info');
+    Route::get('/admin/dashboard/list/student/{id}', 'Admin\UserController@studentInfo')->name('admin.dashboard.list.student.info');
     Route::get('/admin/classroom/create','Admin\ClassroomController@createPage')->name('admin.classroom.create');
     Route::post('/admin/classroom/create/store', 'Admin\ClassroomController@createStore')->name('admin.classroom.create.store');
     Route::get('/admin/classroom/list', 'Admin\ClassroomController@listPage')->name('admin.classroom.list');

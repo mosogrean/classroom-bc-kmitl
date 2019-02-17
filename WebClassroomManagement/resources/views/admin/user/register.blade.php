@@ -10,7 +10,7 @@
                     <div class="card-body">
 
                         <div class="container">
-                            <form class="form-horizontal" action="{{ route('admin.user.register.store') }}" method="post">
+                            <form class="form-horizontal" action="{{ route('dashboard') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Username:</label>

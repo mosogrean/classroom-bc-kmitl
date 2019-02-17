@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-xs-9 col-md-9">
                             <h4><a href="#">HM303</a></h4>
-                            <p>รหัสเข้าใช้งาน: 66L9K</p>
+                            <h>รหัสเข้าใช้งาน: 66L9K</h>
 
                             <button type="edit" class="btn btn-default btn-md pull-right">Edit</button>
                         </div>
