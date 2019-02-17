@@ -17,16 +17,14 @@ class ClassroomController extends Controller
         return  view('student.classroom.studentRoom');
     }
 
-    public function calendar($room)
+    public function scalendar($room)
     {
-        return view('student.classroom.calendar', ['room' => $room]);
+        return view('student.classroom.scalendar', ['room' => $room]);
     }
 
-    public function timePicker($room, Request $request)
+    public function stimePicker($room, Request $request)
     {
-        dump($room);
-        dd($request->all());
-        return view('student.classroom.teacherRoomTime', compact(['room', 'time']));
+        return view('student.classroom.stime', compact(['room', 'date']));
     }
 
     public function teacherAndStudentRoom()
@@ -34,6 +32,15 @@ class ClassroomController extends Controller
         return view('student.classroom.teacherAndStudentRoom');
     }
 
+    public function tscalendar($room)
+    {
+        return view('student.classroom.tscalendar', ['room' => $room]);
+    }
+
+    public function tstimePicker($room, Request $request)
+    {
+        return view('student.classroom.tstime', compact(['room', 'date']));
+    }
     /**
      * Show the form for creating a new resource.
      *

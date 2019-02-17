@@ -8,6 +8,7 @@
                 </a></li>
             <li class="active">classroom</li>
             <li class="active">student room</li>
+            <li class="active">{{$room}}</li>
         </ol>
     </div><!--/.row-->
 
@@ -18,20 +19,19 @@
     </div>
     <div class="panel panel-default articles">
         <div class="panel-heading">
-            Student Room Info
-            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
-        </div>
+           Choose Time to Reserve
+            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
         <div class="panel-body articles-container">
-            <div class="article border-bottom">
+            <div class="article border-bottom" style="background:#ff4d4d">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">HM303</div>
-                            <div class="text-muted">Room Id</div>
+                            <div class="large">9.00-12.00</div>
+                            <div class="text">Date: </div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.scalendar', "HM303") }}">Reserve & Edit</a></h4>
-                            <p>ที่ตั้ง: อาคาร7ชั้น ชั้น3 คณะวิศวกรรมศาสตร์ KMITL</p>
+                            <h4>Room Id: {{$room}}</h4>
+                            <h>ที่ตั้ง:</h>
 
                         </div>
                     </div>
@@ -39,16 +39,18 @@
                 <div class="clear"></div>
             </div><!--End .article-->
 
-            <div class="article border-bottom">
+            <div class="article border-bottom" style="background:#66ff99">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">D513</div>
-                            <div class="text-muted">Room Id</div>
+                            <div class="large">13.00-16.00</div>
+                            <div class="text">Date: </div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.scalendar', "HM513") }}">Reserve & Edit</a></h4>
-                            <p>ที่ตั้ง: อาคารพระเทพฯ ชั้น5 คณะวิศวกรรมศาสตร์ KMITL</p>
+                            <h4>Room Id: {{$room}}</h4>
+                            <h>ที่ตั้ง:</h>
+
+                            <button type="edit" class="btn btn-default btn-md pull-right">Reserve</button>
 
                         </div>
                     </div>
@@ -56,16 +58,18 @@
                 <div class="clear"></div>
             </div><!--End .article-->
 
-            <div class="article">
+            <div class="article border-bottom" style="background:#cce6ff">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">E304</div>
-                            <div class="text-muted">Room Id</div>
+                            <div class="large">16.30-19.30</div>
+                            <div class="text">Date: </div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.scalendar', "E304") }}">Reserve & Edit</a></h4>
-                            <p>ที่ตั้ง: อาคาร12ชั้น ชั้น3 คณะวิศวกรรมศาสตร์ KMITL</p>
+                            <h4>Room Id: {{$room}}</h4>
+                            <h>ที่ตั้ง:</h>
+
+                            <button type="edit" class="btn btn-default btn-md pull-right">Edit</button>
 
                         </div>
                     </div>
