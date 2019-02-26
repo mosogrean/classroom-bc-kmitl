@@ -14,16 +14,15 @@ class ClassroomController extends Controller
         return  view('teacher.classroom.teacherRoom');
     }
 
-    public function calendar($room)
+    public function tcalendar($room)
     {
-        return view('teacher.classroom.calendar', ['room' => $room]);
+        return view('teacher.classroom.tcalendar', ['room' => $room]);
     }
 
-    public function timePicker($room, Request $request)
+    public function ttimePicker($room, Request $request)
     {
-        dump($room);
-        dd($request->all());
-        return view('teacher.classroom.teacherRoomTime', compact(['room', 'time']));
+
+        return view('teacher.classroom.tTime', compact(['room', 'time']));
     }
 
     public function teacherAndStudentRoom()
