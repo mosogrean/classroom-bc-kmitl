@@ -26,17 +26,8 @@ rule TeacherCanSeeTeacher {
   participant: "classroom.management.kmitl.Positions#Teacher"
   operation: READ, CREATE, UPDATE
   resource: "classroom.management.kmitl.Teachers"
-  //condition: (p.getIdentifier() === r.position.getIdentifier())
   action: ALLOW
 }
-
-/*rule TeacherCanSeePositions {
-  description: ""
-  participant: "classroom.management.kmitl.Positions#Teacher"
-  operation: READ
-  resource: "classroom.management.kmitl.Positions"
-  action: ALLOW
-}*/
 
 rule TeacherCanSeeStudent {
    description: ""
@@ -78,6 +69,14 @@ rule TeacherCanRevokeTeacherRoom {
   action: ALLOW 
 }
 
+rule TeacherCanEditTeacherRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherEditTeacherRoom"
+  action: ALLOW 
+}
+
 rule TeacherCanInvokeTSRoom {
   description: ""
   participant: "classroom.management.kmitl.Positions#Teacher"
@@ -94,11 +93,35 @@ rule TeacherCanRevokeTSRoom {
   action: ALLOW 
 }
 
+rule TeacherCanEditTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherEditTSRoom"
+  action: ALLOW 
+}
+
 rule TeacherCanAddToken {
   description: ""
   participant: "classroom.management.kmitl.Positions#Teacher"
   operation: ALL
   resource: "classroom.management.kmitl.TeacherAddToken"
+  action: ALLOW 
+}
+
+rule TeacherCanUnlockTeacherRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherUnlockTeacherRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanUnlockTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: ALL
+  resource: "classroom.management.kmitl.TeacherUnlockTSRoom"
   action: ALLOW 
 }
 
@@ -109,7 +132,6 @@ rule StudentCanSeeStudents {
   participant: "classroom.management.kmitl.Positions#Student"
   operation: READ, CREATE, UPDATE
   resource: "classroom.management.kmitl.Students"
-  //condition: (p.getIdentifier() == r.position.getIdentifier())
   action: ALLOW 
 }
 
@@ -145,6 +167,14 @@ rule StudentCanRevokeStudentRoom {
   action: ALLOW 
 }
 
+rule StudentCanEditStudentRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentEditStudentRoom"
+  action: ALLOW 
+}
+
 rule StudentCanInvokeTSRoom {
   description: ""
   participant: "classroom.management.kmitl.Positions#Student"
@@ -161,6 +191,29 @@ rule StudentCanRevokeTSRoom {
   action: ALLOW 
 }
 
+rule StudentCanEditTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentEditTSRoom"
+  action: ALLOW 
+}
+
+rule StudentCanUnlockStudentRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentUnlockStudentRoom"
+  action: ALLOW 
+}
+
+rule StudentCanUnlockTSRoom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.StudentUnlockTSRoom"
+  action: ALLOW 
+}
 
 //-------------------------------------------------------------------------------------------------------------
 
