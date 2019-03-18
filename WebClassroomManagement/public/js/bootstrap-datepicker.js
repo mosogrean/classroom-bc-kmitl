@@ -824,7 +824,7 @@
                 var route = document.getElementById("route").value
 
                // location.href=route+'/'+d.getDate()+'/'+d.getDay()+'/'+d.getMonth()+'/'+d.getUTCFullYear()
-                location.href=route+'?data='+d.getDate()+'&day='+d.getDay()+'&month='+d.getMonth()+'&year='+d.getUTCFullYear()
+                location.href=route+'?date='+d.getDate()+'&day='+d.getDay()+'&month='+d.getMonth()+'&year='+d.getUTCFullYear()
 			});
 
 			if (year < startYear || year > endYear){

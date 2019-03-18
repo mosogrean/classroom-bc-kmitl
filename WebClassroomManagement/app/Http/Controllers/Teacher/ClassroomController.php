@@ -30,6 +30,16 @@ class ClassroomController extends Controller
         return view('teacher.classroom.teacherAndStudentRoom');
     }
 
+    public function tscalendar($room)
+    {
+        return view('teacher.classroom.tscalendar', ['room' => $room]);
+    }
+
+   public function tsClass($room)
+   {
+       return view('teacher.classroom.tsClass',['room'=> $room]);
+   }
+
 
     /**
      * Show the form for creating a new resource.

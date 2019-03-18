@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Reservation\CheckDate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,7 +25,53 @@ class ClassroomController extends Controller
 
     public function stimePicker($room, Request $request)
     {
-        return view('student.classroom.stime', compact(['room', 'date']));
+        $dateTime = $request->all();
+        $data = [
+            'room' => $room,
+            'date' => $dateTime['date'],
+            'day' => $dateTime['day'],
+            'month' => $dateTime['month'],
+            'year' => $dateTime['year'],
+        ];
+        return view('student.classroom.stime', $data);
+    }
+
+    public function sReservation($room, Request $request)
+    {
+        $dateTime = $request->all();
+        $day = CheckDate::checkDay($dateTime['day']);
+        $time = CheckDate::checkTime($dateTime['time']);
+        $data = [
+            'room' => $room,
+            'time' => $time,
+            'date' => $dateTime['date'],
+            'day' => $day,
+            'month' => $dateTime['month'],
+            'year' => $dateTime['year'],
+        ];
+        return view('student.classroom.sreservation', $data);
+    }
+
+    public function sEdit($room, Request $request)
+    {
+        $dateTime = $request->all();
+        $day = CheckDate::checkDay($dateTime['day']);
+        $time = CheckDate::checkTime($dateTime['time']);
+        $data = [
+            'room' => $room,
+            'time' => $time,
+            'date' => $dateTime['date'],
+            'day' => $day,
+            'month' => $dateTime['month'],
+            'year' => $dateTime['year'],
+        ];
+        return view('student.classroom.sedit', $data);
+    }
+
+
+    public function sConfirmation(Request $request)
+    {
+        return($request);
     }
 
     public function teacherAndStudentRoom()
@@ -39,7 +86,36 @@ class ClassroomController extends Controller
 
     public function tstimePicker($room, Request $request)
     {
-        return view('student.classroom.tstime', compact(['room', 'date']));
+        $dateTime = $request->all();
+        $data = [
+            'room' => $room,
+            'date' => $dateTime['date'],
+            'day' => $dateTime['day'],
+            'month' => $dateTime['month'],
+            'year' => $dateTime['year'],
+        ];
+        return view('student.classroom.tstime', $data);
+    }
+
+    public function tsReservation($room, Request $request)
+    {
+        $dateTime = $request->all();
+        $day = CheckDate::checkDay($dateTime['day']);
+        $time = CheckDate::checkTime($dateTime['time']);
+        $data = [
+            'room' => $room,
+            'time' => $time,
+            'date' => $dateTime['date'],
+            'day' => $day,
+            'month' => $dateTime['month'],
+            'year' => $dateTime['year'],
+        ];
+        return view('student.classroom.tsreservation', $data);
+    }
+
+    public function tsConfirmation(Request $request)
+    {
+        return($request);
     }
     /**
      * Show the form for creating a new resource.

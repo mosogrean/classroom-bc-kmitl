@@ -26,11 +26,11 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">E704</div>
+                            <div class="large">E12-704</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.tscalendar', "E704") }}">Reserve & Edit</a></h4>
+                            <h4><a href="{{ route('student.tscalendar', "E12-704") }}">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคาร12ชั้น ชั้น7 คณะวิศวกรรมศาสตร์ KMITL</p>
 
                         </div>
@@ -43,11 +43,11 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">C113</div>
+                            <div class="large">C-113</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.tscalendar', "C113") }}">Reserve & Edit</a></h4>
+                            <h4><a href="{{ route('student.tscalendar', "C-113") }}">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคารพระเทพฯ ชั้น1 คณะวิศวกรรมศาสตร์ KMITL</p>
 
                         </div>
@@ -60,11 +60,11 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">E604</div>
+                            <div class="large">E12-604</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.tscalendar', "E604") }}">Reserve & Edit</a></h4>
+                            <h4><a href="{{ route('student.tscalendar', "E12-604") }}">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคาร12ชั้น ชั้น6 คณะวิศวกรรมศาสตร์ KMITL</p>
 
                         </div>

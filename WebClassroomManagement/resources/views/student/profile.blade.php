@@ -35,8 +35,10 @@
                     <li class="list-group-item">Name</li>
                     <li class="list-group-item">Tel.</li>
                     <li class="list-group-item">E-mail</li>
+                    <li class="list-group-item">Faculty</li>
+                    <li class="list-group-item">Major</li>
                     <li class="list-group-item">Token</li>
-                    <li class="list-group-item">Room</li>
+
                 </ul>
             </div>
 

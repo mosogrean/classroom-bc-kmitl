@@ -57,4 +57,26 @@
                 </div>
                 <div class="clear"></div>
             </div><!--End .article-->
+
+        </div>
+
+    </div>
+
+
+
+        <div class="col-md-3"  >
+            <div class="panel panel-unavailable">
+                <div class="panel-heading"  style="background:#cce6ff">Reserved
+                    </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3"  >
+            <div class="panel panel-unavailable">
+                <div class="panel-heading"  style="background:#ffd1b3">On using
+                    </div>
+
+            </div>
+        </div>
 @endsection

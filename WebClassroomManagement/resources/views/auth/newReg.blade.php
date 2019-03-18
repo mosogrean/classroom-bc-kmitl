@@ -39,8 +39,7 @@
                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
                         </div>
                         <div class="form-group">
-                            <label>Password Confirming</label>
-                            <h>(Must be the same with your password)</h>
+                            <label>Confirmed Password</label>
                             <input class="form-control" placeholder="Password" name="password" type="password" value="">
                         </div>
                         <div class="form-group">
@@ -79,12 +78,12 @@
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input name="remember" type="checkbox" value="Remember Me">Are you agree to this terms <a href="Terms of service">Terms of services</a>
+                                <input name="remember" type="checkbox" value="Remember Me">Agree to this terms <a href="Terms of service">Terms of services</a>
                             </label>
 
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit Button</button>
-                        <button type="reset" class="btn btn-default">Reset Button</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-default">Reset</button>
                 </form>
             </div>
         </div>

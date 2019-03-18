@@ -30,9 +30,9 @@
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('teacher.calendar', "E704") }}">Reserve & Edit</a></h4>
+                            <h4><a href="#">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคาร12ชั้น ชั้น7 คณะวิศวกรรมศาสตร์ KMITL</p>
-
+                            <a href="{{ route('teacher.dashboard') }}" class="btn btn-default btn-md pull-right" role="button">Dashboard</a>
                         </div>
                     </div>
                 </div>
@@ -42,13 +42,14 @@
             <div class="article border-bottom">
                 <div class="col-xs-12">
                     <div class="row">
-                        <div class="col-xs-2 col-md-2 date">
-                            <div class="large">28</div>
-                            <div class="text-muted">Jun</div>
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">C113</div>
+                            <div class="text-muted">Room Id</div>
                         </div>
-                        <div class="col-xs-10 col-md-10">
-                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">Reserve & Edit</a></h4>
+                            <p>ที่ตั้ง: อาคารพระเทพฯ ชั้น1 คณะวิศวกรรมศาสตร์ KMITL</p>
+
                         </div>
                     </div>
                 </div>
@@ -58,18 +59,20 @@
             <div class="article">
                 <div class="col-xs-12">
                     <div class="row">
-                        <div class="col-xs-2 col-md-2 date">
-                            <div class="large">24</div>
-                            <div class="text-muted">Jun</div>
+                        <div class="col-xs-3 col-md-3 date">
+                            <div class="large">E604</div>
+                            <div class="text-muted">Room Id</div>
                         </div>
-                        <div class="col-xs-10 col-md-10">
-                            <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                        <div class="col-xs-9 col-md-9">
+                            <h4><a href="#">Reserve & Edit</a></h4>
+                            <p>ที่ตั้ง: อาคาร12ชั้น ชั้น6 คณะวิศวกรรมศาสตร์ KMITL</p>
+
                         </div>
                     </div>
                 </div>
                 <div class="clear"></div>
             </div><!--End .article-->
+
         </div>
     </div><!--End .articles-->
 

@@ -47,15 +47,24 @@
                         </div>
                         <div class="col-xs-9 col-md-9">
                             <h4>Room Id: {{$room}}</h4>
-                            <h>ที่ตั้ง:</h>
 
-                            <button type="edit" class="btn btn-default btn-md pull-right">Reserve</button>
+                            {{--<form action="#" method="GET">--}}
+                            {{--@csrf--}}
+                            {{--<input type="hidden" name="time" value=""><br>--}}
+                            {{--<input type="hidden" name="date" ><br>--}}
+                            {{--<input type="hidden" name="room"><br>--}}
+                            {{--<input class="btn btn-default btn-md pull-right" type="submit" value="Reserve">--}}
+                            {{--</form>--}}
+                            <input type="button" class="btn btn-default btn-md pull-right" onclick="location.href='{{ route('student.tsreservation',$room) }}?time=1&date={{$date}}&day={{$day}}&month={{$month}}&year={{$year}}';" value="Reserve" />
+                            {{--<input type="button" class="btn btn-default btn-md pull-right" onclick="location.href='{{ route('student.sreservation', $room) }}';" value="Reserve" />--}}
+                            {{--<button type="edit" class="btn btn-default btn-md pull-right">Reserve</button>--}}
 
                         </div>
                     </div>
                 </div>
                 <div class="clear"></div>
             </div><!--End .article-->
+
 
             <div class="article border-bottom" style="background:#cce6ff">
                 <div class="col-xs-12">

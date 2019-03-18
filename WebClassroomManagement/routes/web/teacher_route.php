@@ -9,3 +9,4 @@ Route::get('/teacher/classroom/teacher/{room}','Teacher\ClassroomController@tcal
 Route::get('/teacher/classroom/teacher/date-picker/{room}','Teacher\ClassroomController@ttimePicker')->name('teacher.ttime');
 
 Route::get('/teacher/classroom/teacher_and_student','Teacher\ClassroomController@teacherAndStudentRoom')->name('teacher.classroom.teacherAndStudent');
+Route::get('/teacher/classroom/teacher_and_student/{room}','Teacher\ClassroomController@tsClass')->name('teacher.tsClass');

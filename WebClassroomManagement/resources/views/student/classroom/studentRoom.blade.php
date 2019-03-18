@@ -26,11 +26,11 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">HM303</div>
+                            <div class="large">HM-303</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.scalendar', "HM303") }}">Reserve & Edit</a></h4>
+                            <h4><a href="{{ route('student.scalendar', "HM-303") }}">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคาร7ชั้น ชั้น3 คณะวิศวกรรมศาสตร์ KMITL</p>
 
                         </div>
@@ -43,11 +43,11 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">D513</div>
+                            <div class="large">D-513</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.scalendar', "HM513") }}">Reserve & Edit</a></h4>
+                            <h4><a href="{{ route('student.scalendar', "D-513") }}">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคารพระเทพฯ ชั้น5 คณะวิศวกรรมศาสตร์ KMITL</p>
 
                         </div>
@@ -60,11 +60,11 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">E304</div>
+                            <div class="large">E12-304</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4><a href="{{ route('student.scalendar', "E304") }}">Reserve & Edit</a></h4>
+                            <h4><a href="{{ route('student.scalendar', "E12-304") }}">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคาร12ชั้น ชั้น3 คณะวิศวกรรมศาสตร์ KMITL</p>
 
                         </div>
