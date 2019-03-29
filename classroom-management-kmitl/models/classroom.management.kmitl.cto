@@ -18,6 +18,8 @@
 
 namespace classroom.management.kmitl
 
+//----------------------------------------------Participants------------------------------------------------
+
 participant Positions identified by position {
   o String position
 }
@@ -40,7 +42,7 @@ participant Teachers identified by teacherId {
   o String major
   o String tel 
   o String email
-  o String[] room 
+  o String[] room optional
 }
 
 participant Students identified by studentId {
@@ -50,24 +52,19 @@ participant Students identified by studentId {
   --> Positions position
   o String faculty
   o String major
-  o String year
   o String tel
   o String email
-  o Integer token default = 2 
-  o String[] room 
+  o Integer token default = 2
+  o String[] room optional
 }
 
-concept Structure {
-  o String date
-  o String startTime
-  o String endTime
-}
+//-------------------------------------------------Assets--------------------------------------------------
 
 asset TeacherRoom identified by roomId {
   o String roomId
-  o Integer roomKey default = 0
-  o Integer counts default = 0
-  o Integer[] matching 
+  o Boolean roomKey default = false
+  o Integer counts default = 0 
+  o Integer[] matching optional
   --> Teachers[] teacher optional
   o Structure[] structure optional
   o String timestamp optional
@@ -77,9 +74,9 @@ asset TeacherRoom identified by roomId {
 
 asset StudentRoom identified by roomId {
   o String roomId
-  o Integer roomKey default = 0
+  o Boolean roomKey default = false
   o Integer counts default = 0
-  o Integer[] matching 
+  o Integer[] matching optional
   --> Students[] student optional
   o Structure[] structure optional
   o String timestamp optional
@@ -89,12 +86,12 @@ asset StudentRoom identified by roomId {
 
 asset TSRoom identified by roomId {
   o String roomId
-  o Integer roomKey default = 0
+  o Boolean roomKey default = false
   o Integer counts default = 0
   o Integer teacherCounts default = 0
   o Integer studentCounts default = 0
-  o Integer[] teacherMatching
-  o Integer[] studentMatching
+  o Integer[] teacherMatching optional
+  o Integer[] studentMatching optional
   --> Teachers[] teacher optional
   --> Students[] student optional
   o Structure[] teacherStructure optional
@@ -102,6 +99,25 @@ asset TSRoom identified by roomId {
   o String timestamp optional
   o String transactionId optional
   o String transaction_p optional
+}
+
+asset Classroom identified by classId {
+  o String classId
+  o String faculty
+  o String major
+  o String subject
+  o String section
+  o String date
+  o String time
+  o Integer counts default = 0
+  --> Students[] studentList optional
+}
+
+//------------------------------------ --------Transactions------------------------------------------------
+
+concept Structure {
+  o String date
+  o String time
 }
 
 transaction TeacherInvokeTeacherRoom {
@@ -152,38 +168,14 @@ transaction StudentRevokeTSRoom {
   o Integer counts
 }
 
-transaction AdminRevokeTeacherRoom {
-  --> Teachers teacher
-  --> TeacherRoom roomId
-  o Integer counts
-}
-
-transaction AdminRevokeStudentRoom {
-  --> Students student
-  --> StudentRoom roomId
-  o Integer counts
-}
-
-transaction AdminRevokeTeacherTSRoom {
-  --> Teachers teacher
-  --> TSRoom roomId
-  o Integer counts
-}
-
-transaction AdminRevokeStudentTSRoom {
-  --> Students student
-  --> TSRoom roomId
-  o Integer counts
-}
-
-transaction TeacherAddToken {
+transaction AddToken {
   --> Students student
   o Integer token
 }
 
-transaction AdminAddToken {
+transaction CreateClassroom {
   --> Students student
-  o Integer token
+  --> Classroom classId
 }
 
 transaction TeacherEditTeacherRoom {
@@ -214,62 +206,27 @@ transaction StudentEditTSRoom {
   o Structure structure
 }
 
-transaction AdminEditTeacherRoom {
-  --> Teachers teacher
+transaction UnlockTeacherRoom {
   --> TeacherRoom roomId
-  o Integer counts
-  o Structure structure
 }
 
-transaction AdminEditStudentRoom {
-  --> Students student
+transaction UnlockStudentRoom {
   --> StudentRoom roomId
-  o Integer counts
-  o Structure structure
 }
 
-transaction AdminEditTeacherTSRoom {
-  --> Teachers teacher
+transaction UnlockTSRoom {
   --> TSRoom roomId
-  o Integer counts
-  o Structure structure
 }
 
-transaction AdminEditStudentTSRoom {
-  --> Students student
-  --> TSRoom roomId
-  o Integer counts
-  o Structure structure
-}
-
-/*transaction JoinTSRoom {
-  --> TSRoom roomId
-  --> Students studentId
-}*/
-
-transaction TeacherUnlockTeacherRoom {
+transaction LockTeacherRoom {
   --> TeacherRoom roomId
-  o Integer counts
-  o String date
-  o String time
 }
 
-transaction StudentUnlockStudentRoom {
+transaction LockStudentRoom {
   --> StudentRoom roomId
-  o Integer counts
-  o String date
-  o String time
 }
 
-transaction TeacherUnlockTSRoom {
+transaction LockTSRoom {
   --> TSRoom roomId
-  o Integer counts
-  o String date
-  o String time
 }
-transaction StudentUnlockTSRoom {
-  --> TSRoom roomId
-  o Integer counts
-  o String date
-  o String time
-}
+

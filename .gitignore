@@ -14,3 +14,9 @@
 /classroom-management-kmitl/test
 /classroom-management-kmitl/npm-debug.log
 classroom-management-kmitl/networkadmin\.card
+
+classroom-management-kmitl/classroom-management-kmitl@0\.0\.1\.bna
+
+*.bna
+
+classroom-management-kmitl/models/cut_code

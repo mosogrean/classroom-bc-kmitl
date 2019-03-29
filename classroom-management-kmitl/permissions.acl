@@ -35,7 +35,7 @@ rule TeacherCanSeeStudent {
    operation: READ
    resource: "classroom.management.kmitl.Students"
    action: ALLOW
- }
+}
 
 rule TeacherCanSeeTeacherRoom {
   description: ""
@@ -50,6 +50,14 @@ rule TeacherCanSeeTSRoom {
   participant: "classroom.management.kmitl.Positions#Teacher"
   operation: READ, UPDATE
   resource: "classroom.management.kmitl.TSRoom"
+  action: ALLOW 
+}
+
+rule TeacherCanSeeClassroom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Teacher"
+  operation: READ, CREATE, UPDATE, DELETE
+  resource: "classroom.management.kmitl.Classroom"
   action: ALLOW 
 }
 
@@ -105,7 +113,7 @@ rule TeacherCanAddToken {
   description: ""
   participant: "classroom.management.kmitl.Positions#Teacher"
   operation: ALL
-  resource: "classroom.management.kmitl.TeacherAddToken"
+  resource: "classroom.management.kmitl.AddToken"
   action: ALLOW 
 }
 
@@ -113,7 +121,7 @@ rule TeacherCanUnlockTeacherRoom {
   description: ""
   participant: "classroom.management.kmitl.Positions#Teacher"
   operation: ALL
-  resource: "classroom.management.kmitl.TeacherUnlockTeacherRoom"
+  resource: "classroom.management.kmitl.UnlockTeacherRoom"
   action: ALLOW 
 }
 
@@ -121,7 +129,7 @@ rule TeacherCanUnlockTSRoom {
   description: ""
   participant: "classroom.management.kmitl.Positions#Teacher"
   operation: ALL
-  resource: "classroom.management.kmitl.TeacherUnlockTSRoom"
+  resource: "classroom.management.kmitl.UnlockTSRoom"
   action: ALLOW 
 }
 
@@ -149,6 +157,14 @@ rule StudentCanSeeTSRoom {
   operation: READ, UPDATE
   resource: "classroom.management.kmitl.TSRoom"
   action: ALLOW 
+}
+
+rule StudentCanSeeClassroom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: READ
+  resource: "classroom.management.kmitl.Classroom"
+  action: ALLOW
 }
 
 rule StudentCanInvokeStudentRoom {
@@ -199,11 +215,19 @@ rule StudentCanEditTSRoom {
   action: ALLOW 
 }
 
+rule StudentCanCreateClassroom {
+  description: ""
+  participant: "classroom.management.kmitl.Positions#Student"
+  operation: ALL
+  resource: "classroom.management.kmitl.CreateClassroom"
+  action: ALLOW
+}
+
 rule StudentCanUnlockStudentRoom {
   description: ""
   participant: "classroom.management.kmitl.Positions#Student"
   operation: ALL
-  resource: "classroom.management.kmitl.StudentUnlockStudentRoom"
+  resource: "classroom.management.kmitl.UnlockStudentRoom"
   action: ALLOW 
 }
 
@@ -211,7 +235,7 @@ rule StudentCanUnlockTSRoom {
   description: ""
   participant: "classroom.management.kmitl.Positions#Student"
   operation: ALL
-  resource: "classroom.management.kmitl.StudentUnlockTSRoom"
+  resource: "classroom.management.kmitl.UnlockTSRoom"
   action: ALLOW 
 }
 
