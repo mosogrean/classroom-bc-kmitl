@@ -34,8 +34,11 @@
             <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
         </div>
         <div class="profile-usertitle">
-            <div class="profile-usertitle-name"> <li><a href="{{ route('student.profile') }}">58010187</a></li></div>
-            <div class="profile-usertitle-status"><span class="indicator label-success"></span>STUDENT</div>
+            @php
+                $user = \Illuminate\Support\Facades\Auth::user();
+            @endphp
+            <div class="profile-usertitle-name"> <li><a href="{{ route('student.profile') }}">{{$user->personal_id}}</a></li></div>
+            <div class="profile-usertitle-status"><span class="indicator label-success"></span>{{$user->position}}</div>
         </div>
         <div class="clear"></div>
     </div>

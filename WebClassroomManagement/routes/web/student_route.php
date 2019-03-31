@@ -1,6 +1,10 @@
 <?php
 
-Route::get('/student/dashboard','Student\DashboardController@index')->name('student.dashboard');
+Route::group(['middleware' => 'is_student'], function () {
+    Route::get('/student/dashboard','Student\DashboardController@index')->name('student.dashboard');
+
+});
+
 Route::get('/student/dashboard/{room}','Student\DashboardController@roomInfo')->name('student.dashboard.room');
 Route::get('/student/dashboard/{room}/open','Student\DashboardController@open')->name('student.open');
 Route::get('/student/dashboard/{room}/unlock','Student\DashboardController@unlock')->name('student.unlock');
