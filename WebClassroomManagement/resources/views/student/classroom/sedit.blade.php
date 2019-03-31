@@ -20,7 +20,6 @@
         <div class="panel panel-danger">
             <div class="panel-heading">Cancel Panel Data</div>
             <div class="panel-body">
-                <form action="{{route('student.sconfirmation')}}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-lg-3"></div>
@@ -54,7 +53,7 @@
                         <div class="col-lg-3"></div>
                         <div class="col-lg-6">
                             <div align="right">
-                                <input type="submit" class="btn btn-md btn-danger" value="Cancel">
+                                <a href="{{ route('student.unreserve',$room) }}" class="btn btn-danger btn-md pull-right" role="button">Unreserve</a>
                                 <input type="submit" class="btn btn-md btn-default" formaction="{{route('student.classroom.student')}}" formmethod="get" value="Back">
                                 {{--<button type="button" class="btn btn-md btn-confirm btn-align:center" style="background:#8AD919">Confirm</button>--}}
                                 {{--<button type="button" class="btn btn-md btn-danger">Cancel</button>--}}

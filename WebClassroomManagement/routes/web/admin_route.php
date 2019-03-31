@@ -3,6 +3,39 @@
 
 Route::group(['middleware' => 'is_admin'], function () {
     Route::get('/admin/dashboard','Admin\DashboardController@index')->name('admin.dashboard');
+
+    Route::get('/admin/profile','Admin\ProfileController@index')->name('admin.profile');
+    Route::get('/admin/profile/edit','Admin\ProfileController@edit')->name('admin.profile.edit');
+
+    Route::get('/admin/user/student','Admin\UserController@studentUser')->name('admin.user.student');
+    Route::get('/admin/user/student/{id}','Admin\UserController@sid')->name('admin.sid');
+    Route::get('/admin/user/student/{id}/sroom','Admin\UserController@sroom')->name('admin.sid.sroom');
+    Route::get('/admin/user/student/{id}/sroom/open_room','Admin\UserController@opensroom')->name('admin.sid.opensroom');
+    Route::get('/admin/user/student/{id}/sroom/unreserve_room','Admin\UserController@unreserves')->name('admin.sid.unreserves');
+
+    Route::get('/admin/user/student/{id}/add_token','Admin\UserController@addstoken')->name('admin.addstoken');
+    Route::get('/admin/user/student/{id}/edit','Admin\UserController@sedit')->name('admin.sedit');
+    Route::get('/admin/user/student/{id}/add_token2','Admin\UserController@addstoken2')->name('admin.addstoken2');
+
+    Route::get('/admin/user/teacher','Admin\UserController@teacherUser')->name('admin.user.teacher');
+    Route::get('/admin/user/teacher/{id}','Admin\UserController@tid')->name('admin.tid');
+    Route::get('/admin/user/teacher/{id}/edit','Admin\UserController@tedit')->name('admin.tedit');
+    Route::get('/admin/user/teacher/{id}/troom','Admin\UserController@troom')->name('admin.tid.troom');
+    Route::get('/admin/user/student/{id}/troom/open_room','Admin\UserController@opentroom')->name('admin.tid.opentroom');
+    Route::get('/admin/user/student/{id}/troom/unreserve_room','Admin\UserController@unreservet')->name('admin.tid.unreservet');
+
+    Route::get('/admin/classroom/student_room','Admin\ClassroomController@studentRoom')->name('admin.classroom.student');
+    Route::get('/admin/classroom/student/{room}','Admin\ClassroomController@acalendar')->name('admin.acalendar');
+    Route::get('/admin/classroom/{room}/close','Admin\ClassroomController@close')->name('admin.close');
+    Route::get('/admin/classroom/add','Admin\ClassroomController@add')->name('admin.add');
+    Route::get('/admin/classroom/confirm','Admin\ClassroomController@confirm')->name('admin.confirm');
+
+    Route::get('/admin/history','Admin\HistoryController@index')->name('admin.history');
+
+    Route::get('/admin/classroom/teacher_room','Admin\ClassroomController@teacherRoom')->name('admin.classroom.teacher');
+    Route::get('/admin/classroom/teacher_and_student_room','Admin\ClassroomController@ts')->name('admin.classroom.ts');
+
+
     Route::get('/admin/dashboard/register','Admin\UserController@registerPage')->name('admin.dashboard.register');
     Route::post('admin//dashboard/register/store', 'Admin\UserController@registerStore')->name('admin.dashboard.register.store');
     Route::get('/admin/dashboard/list', 'Admin\UserController@listPage')->name('admin.dashboard.list');

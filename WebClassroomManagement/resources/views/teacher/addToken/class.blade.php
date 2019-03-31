@@ -1,4 +1,4 @@
-@extends('layouts.layout-student')
+@extends('layouts.layout-teacher')
 
 @section('content')
     <div class="row">
@@ -6,32 +6,36 @@
             <li><a href="#">
                     <em class="fa fa-home"></em>
                 </a></li>
-            <li class="active">classroom</li>
-            <li class="active">student room</li>
-            <li class="active">{{$room}}</li>
+            <li class="active">Add Token</li>
+            <li class="active">Choose Class</li>
+            <li class="active">Choose Student</li>
+
         </ol>
     </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Student Room</h1>
+            <h1 class="page-header">Telecom01</h1>
         </div>
     </div>
     <div class="panel panel-default articles">
         <div class="panel-heading">
-           Choose Time to Reserve
-            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+            Student in Telecom01
+            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
+        </div>
         <div class="panel-body articles-container">
-            <div class="article border-bottom" style="background:#ff4d4d">
+            <div class="article border-bottom">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">9.00-12.00</div>
-                            <div class="text">Date: </div>
+                            <div class="large">58010187</div>
+                            <div class="text-muted">Student Id</div>
+
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4>Room Id: {{$room}}</h4>
-                            <h>ที่ตั้ง:</h>
+                            <p>Name: Chirabhat </p>
+                            <p>Surname: Kijtham</p>
+                            <a href="{{ route('teacher.student',"58010187") }}" class="btn btn-default btn-md pull-right" role="button">Add Token</a>
 
                         </div>
                     </div>
@@ -39,18 +43,18 @@
                 <div class="clear"></div>
             </div><!--End .article-->
 
-            <div class="article border-bottom" style="background:#66ff99">
+            <div class="article border-bottom">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">13.00-16.00</div>
-                            <div class="text">Date: </div>
+                            <div class="large">58010211</div>
+                            <div class="text-muted">Student Id</div>
+
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4>Room Id: {{$room}}</h4>
-                            <h>ที่ตั้ง:</h>
-
-                            <button type="edit" class="btn btn-default btn-md pull-right">Reserve</button>
+                            <p>Name: Jessada </p>
+                            <p>Surname: T.</p>
+                            <a href="#" class="btn btn-default btn-md pull-right" role="button">Add Token</a>
 
                         </div>
                     </div>
@@ -58,24 +62,25 @@
                 <div class="clear"></div>
             </div><!--End .article-->
 
-            <div class="article border-bottom" style="background:#cce6ff">
+            <div class="article border-bottom">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">16.30-19.30</div>
-                            <div class="text">Date: </div>
+                            <div class="large">58010353</div>
+                            <div class="text-muted">Student Id</div>
+
                         </div>
                         <div class="col-xs-9 col-md-9">
-                            <h4>Room Id: {{$room}}</h4>
-                            <h>ที่ตั้ง:</h>
-
-                            <button type="edit" class="btn btn-default btn-md pull-right">Edit</button>
+                            <p>Name: Nutchaphon </p>
+                            <p>Surname: U.</p>
+                            <a href="#" class="btn btn-default btn-md pull-right" role="button">Add Token</a>
 
                         </div>
                     </div>
                 </div>
                 <div class="clear"></div>
             </div><!--End .article-->
+
         </div>
     </div><!--End .articles-->
 

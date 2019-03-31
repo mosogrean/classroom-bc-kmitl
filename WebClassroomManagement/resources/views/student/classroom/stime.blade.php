@@ -21,27 +21,12 @@
            Choose Time to Reserve
             <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
         <div class="panel-body articles-container">
-            <div class="article border-bottom" style="background:#ff4d4d">
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-3 col-md-3 date">
-                            <div class="large">9.00-12.00 </div>
-                            <div class="text">Date: </div>
-                        </div>
-                        <div class="col-xs-9 col-md-9">
-                            <h4>Room Id: {{$room}}</h4>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div><!--End .article-->
 
             <div class="article border-bottom" style="background:#66ff99">
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">13.00-16.00</div>
+                            <div class="large">9.00-12.00</div>
                             <div class="text">Date: </div>
                         </div>
                         <div class="col-xs-9 col-md-9">
@@ -54,7 +39,7 @@
                                 {{--<input type="hidden" name="room"><br>--}}
                                 {{--<input class="btn btn-default btn-md pull-right" type="submit" value="Reserve">--}}
                             {{--</form>--}}
-                            <input type="button" class="btn btn-default btn-md pull-right" onclick="location.href='{{ route('student.sreservation',$room) }}?time=1&date={{$date}}&day={{$day}}&month={{$month}}&year={{$year}}';" value="Reserve" />
+                            <input type="button" class="btn btn-default btn-md pull-right" onclick="location.href='{{ route('student.sreservation',$room) }}?time=0&date={{$date}}&day={{$day}}&month={{$month}}&year={{$year}}';" value="Reserve" />
                             {{--<input type="button" class="btn btn-default btn-md pull-right" onclick="location.href='{{ route('student.sreservation', $room) }}';" value="Reserve" />--}}
                             {{--<button type="edit" class="btn btn-default btn-md pull-right">Reserve</button>--}}
 
@@ -68,7 +53,7 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">16.30-19.30</div>
+                            <div class="large">13.00-16.00</div>
                             <div class="text">Date: </div>
                         </div>
                         <div class="col-xs-9 col-md-9">
@@ -81,7 +66,7 @@
                             {{--<input type="hidden" name="room"><br>--}}
                             {{--<input class="btn btn-default btn-md pull-right" type="submit" value="Reserve">--}}
                             {{--</form>--}}
-                            <input type="button" class="btn btn-default btn-md pull-right" onclick="location.href='{{ route('student.sedit',$room) }}?time=1&date={{$date}}&day={{$day}}&month={{$month}}&year={{$year}}';" value="Cancel" />
+                            <input type="button" class="btn btn-danger btn-md pull-right" onclick="location.href='{{ route('student.sedit',$room) }}?time=1&date={{$date}}&day={{$day}}&month={{$month}}&year={{$year}}';" value="Unreserve" />
                             {{--<input type="button" class="btn btn-default btn-md pull-right" onclick="location.href='{{ route('student.sreservation', $room) }}';" value="Reserve" />--}}
                             {{--<button type="edit" class="btn btn-default btn-md pull-right">Reserve</button>--}}
 

@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
-    public function __construct()
+
+    public function index()
     {
-        $this->middleware('is_admin');
+        return  view('admin.profile');
     }
 
-    public function editProfile()
+    public function edit()
     {
-        $edit
+        return  view('admin.profile.edit');
     }
 }

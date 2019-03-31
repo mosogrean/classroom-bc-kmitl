@@ -2,6 +2,10 @@
 
 Route::get('/student/dashboard','Student\DashboardController@index')->name('student.dashboard');
 Route::get('/student/dashboard/{room}','Student\DashboardController@roomInfo')->name('student.dashboard.room');
+Route::get('/student/dashboard/{room}/open','Student\DashboardController@open')->name('student.open');
+Route::get('/student/dashboard/{room}/unlock','Student\DashboardController@unlock')->name('student.unlock');
+Route::get('/student/dashboard/{room}/unreserve','Student\DashboardController@unreserve')->name('student.unreserve');
+
 
 Route::get('/student/classroom/student','Student\ClassroomController@studentRoom')->name('student.classroom.student');
 Route::get('/student/classroom/student/{room}','Student\ClassroomController@scalendar')->name('student.scalendar');
@@ -23,3 +27,5 @@ Route::get('/student/history/{room}','Student\HistoryController@roomInfo')->name
 Route::get('/student/join_class','Student\JoinController@index')->name('student.join');
 
 Route::get('/student/profile','Student\ProfileController@index')->name('student.profile');
+Route::get('/student/profile/edit','Student\ProfileController@sedit')->name('student.profile.edit');
+

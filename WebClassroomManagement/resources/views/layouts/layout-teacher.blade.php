@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="#">KMITL</a>
+            <a class="navbar-brand" href="{{ route('teacher.dashboard') }}">KMITL</a>
 
             </ul>
         </div>
@@ -36,7 +36,7 @@
             <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
         </div>
         <div class="profile-usertitle">
-            <div class="profile-usertitle-name"> <li><a href="{{ route('student.profile') }}">00000001</a></li></div>
+            <div class="profile-usertitle-name"> <li><a href="{{ route('teacher.profile') }}">00000001</a></li></div>
             <div class="profile-usertitle-status"><span class="indicator label-success"></span>TEACHER</div>
         </div>
         <div class="clear"></div>
@@ -56,7 +56,8 @@
                     </a></li>
             </ul>
         </li>
-        <li><a href="AddCoin.html"><em class="fa fa-bar-chart"> Add Coin </em></a></li>
+        <li><a href="{{ route('teacher.create') }}"><em class="fa fa-toggle-off">&nbsp;</em>    Create Class</a></li>
+        <li><a href="{{ route('teacher.add') }}"><em class="fa fa-bar-chart"> Add Token </em></a></li>
         <li><a href="History.html"><em class="fa fa-clone">&nbsp;</em> History </a></li>
 
         <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout </a></li>

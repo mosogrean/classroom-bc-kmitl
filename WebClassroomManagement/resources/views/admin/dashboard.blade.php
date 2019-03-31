@@ -1,49 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.layout-admin')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Admin role</div>
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#">
+                    <em class="fa fa-home"></em>
+                </a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </div><!--/.row-->
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                            <div class="card">
-                                <div class="card-header">Users</div>
-
-                                <div class="card-body">
-                                    @if (session('status'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ session('status') }}
-                                        </div>
-                                    @endif
-                                    <a href="{{ route('admin.user.register') }}" class="btn btn-info" role="button">Register user</a>
-                                    <a href="{{ route('admin.user.list') }}" class="btn btn-info" role="button">List account</a>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">Classrooms</div>
-
-                                <div class="card-body">
-                                        @if (session('status'))
-                                            <div class="alert alert-success" role="alert">
-                                                {{ session('status') }}
-                                            </div>
-                                        @endif
-                                        <a href="{{ route('admin.classroom.create') }}" class="btn btn-info" role="button">Classroom create</a>
-                                        <a href="{{ route('admin.classroom.list') }}" class="btn btn-info" role="button">Classroom list</a>
-
-
-                                </div>
-                            </div>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
         </div>
     </div>
+    <div class="panel panel-default articles">
+        <div class="panel-heading">
+            Admin Dashboard
+            <ul class="pull-right ">
+
+            </ul>
+            <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+        <div class="panel-body articles-container">
+
+            welcome back:)
+
+        </div>
+    </div><!--End .articles-->
+
 @endsection

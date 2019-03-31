@@ -30,19 +30,62 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <ul class="list-group">
-                    <li class="list-group-item">Student ID</li>
-                    <li class="list-group-item">Name</li>
-                    <li class="list-group-item">Tel.</li>
-                    <li class="list-group-item">E-mail</li>
-                    <li class="list-group-item">Faculty</li>
-                    <li class="list-group-item">Major</li>
-                    <li class="list-group-item">Token</li>
+                    <div class="col-xs-12">
+                        <div class="panel panel-success">
+                            <div class="panel-body">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-6">
 
-                </ul>
-            </div>
+                                        <table class="col-lg-6 table" border="0">
+                                            <tbody>
+                                            <tr>
+                                                <td align="right">Student ID   :</td>
+                                                <td align="left">58010187</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">Name   :</td>
+                                                <td align="left">Chirabhat</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">Surname   :</td>
+                                                <td align="left">Kijtham</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">Tel.   :</td>
+                                                <td align="left">0859090251</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">E-mail   :</td>
+                                                <td align="left">58010187@kmitl.ac.th</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">Faculty   :</td>
+                                                <td align="left">Engineering</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">Major   :</td>
+                                                <td align="left">Telecommunication</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right">Token   :</td>
+                                                <td align="left">20</td>
+                                            </tr>
 
-            <button type="edit" class="btn btn-default btn-md pull-right">Edit</button>
+                                            </tbody>
+                                        </table>
 
-            @endsection
+                                    </div>
+
+                                    <div class="col-lg-3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>            </div>
+            <a href="{{ route('student.profile.edit') }}" class="btn btn-default btn-md pull-right" role="button">Edit</a>
+        </div>
+    </div>
+
+@endsection
 

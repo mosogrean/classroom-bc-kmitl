@@ -17,6 +17,11 @@ class ProfileController extends Controller
         return  view('student.profile');
     }
 
+    public function sedit()
+    {
+        return  view('student.profile.edit');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

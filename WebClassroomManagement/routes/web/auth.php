@@ -5,7 +5,7 @@
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
+Route::post('register', 'NewReg\RegisterController@store')->name('register.store');
 
 
 

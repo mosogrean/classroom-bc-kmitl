@@ -28,7 +28,7 @@
             <div id="calendar"></div>
             <div>
                 <form>
-                    <input type="hidden" id="route" value="{{ route('teacher.ttime', $room)}}">
+                    <input type="hidden" id="route" value="{{ route('teacher.ttime',$room)}}">
                 </form>
             </div>
         </div>

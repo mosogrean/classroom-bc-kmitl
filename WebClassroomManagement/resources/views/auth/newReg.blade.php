@@ -16,35 +16,36 @@
         <div class="register-panel panel panel-default">
             <div class="panel-heading">Register</div>
             <div class="panel-body">
-                <form role="form">
+                <form role="form" action="{{route('register.store')}}" method="post">
+                    @csrf
                     <fieldset>
                         <div class="form-group">
                             <label>Name</label>
-                            <input class="form-control" placeholder="Name">
+                            <input class="form-control" placeholder="Name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label>Surname</label>
-                            <input class="form-control" placeholder="Surname">
+                            <input class="form-control" placeholder="Surname" name="surname" required>
                         </div>
                         <div class="form-group">
                             <label>E-mail</label>
-                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="">
+                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="" required>
                         </div>
                         <div class="form-group">
                             <label>Tel.</label>
-                            <input class="form-control" placeholder="Tel." name="tel." type="tel." autofocus="">
+                            <input class="form-control" placeholder="Tel." name="tel." type="tel." autofocus="" required>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
                         </div>
                         <div class="form-group">
                             <label>Confirmed Password</label>
-                            <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                            <input class="form-control" placeholder="Password" name="confirmpassword" type="password" value="" required>
                         </div>
                         <div class="form-group">
                             <label>Select your position</label>
-                            <select class="form-control">
+                            <select class="form-control" name="position" required>
                                 <option>Student</option>
                                 <option>Teacher</option>
 
@@ -52,8 +53,7 @@
                         </div>
                         <div class="form-group">
                             <label>Select your faculty</label>
-                            <h>(For student only)</h>
-                            <select class="form-control">
+                            <select class="form-control" name="faculty" required>
                                 <option>Engineering</option>
                                 <option>Architecture</option>
                                 <option>Sciences</option>
@@ -62,8 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label>Select your major</label>
-                            <h>(For student only)</h>
-                            <select class="form-control">
+                            <select class="form-control" name="major" required>
                                 <option>Telecommunication</option>
                                 <option>Electrical</option>
                                 <option>Mechanical</option>
@@ -74,7 +73,7 @@
                         <div class="form-group">
                             <label>Student ID</label>
                             <h>(For student only)</h>
-                            <input class="form-control" placeholder="Please insert your student ID">
+                            <input class="form-control" placeholder="Please insert your student ID" name="studentID" required>
                         </div>
                         <div class="checkbox">
                             <label>

@@ -22,6 +22,21 @@ class DashboardController extends Controller
         return view('teacher.dashboard.room', ['room' => $room]);
     }
 
+
+    public function open($room)
+    {
+        return view('teacher.dashboard.open', ['room' => $room]);
+    }
+
+    public function unlock($room)
+    {
+        return view('teacher.dashboard.unlock', ['room' => $room]);
+    }
+
+    public function unreserve($room)
+    {
+        return view('teacher.dashboard.unreserve', ['room' => $room]);
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Reservation\CheckDate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -21,9 +22,32 @@ class ClassroomController extends Controller
 
     public function ttimePicker($room, Request $request)
     {
-
-        return view('teacher.classroom.tTime', compact(['room', 'time']));
+        $dateTime = $request->all();
+        $data = [
+            'room' => $room,
+            'date' => $dateTime['date'],
+            'day' => $dateTime['day'],
+            'month' => $dateTime['month'],
+            'year' => $dateTime['year'],
+        ];
+        return view('teacher.classroom.ttime', $data);
     }
+    public function tReservation($room, Request $request)
+    {
+        $dateTime = $request->all();
+        $day = CheckDate::checkDay($dateTime['day']);
+        $time = CheckDate::checkTime($dateTime['time']);
+        $data = [
+            'room' => $room,
+            'time' => $time,
+            'date' => $dateTime['date'],
+            'day' => $day,
+            'month' => $dateTime['month'],
+            'year' => $dateTime['year'],
+        ];
+        return view('teacher.classroom.treservation', $data);
+    }
+
 
     public function teacherAndStudentRoom()
     {

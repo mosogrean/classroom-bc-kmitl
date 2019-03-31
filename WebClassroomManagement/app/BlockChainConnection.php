@@ -3,6 +3,8 @@
 namespace App;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
 
 class BlockChainConnection
 {
@@ -29,6 +31,7 @@ class BlockChainConnection
             $req = json_decode($res->getBody()->getContents(),true);
             return $req;
         } catch (ConnectException $exception) {
+            dd(1);
             return $exception->getResponse()->getBody()->getContents();
         }
     }

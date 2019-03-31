@@ -26,13 +26,14 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">E704</div>
+                            <div class="large">E12-704</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
                             <h4><a href="#">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคาร12ชั้น ชั้น7 คณะวิศวกรรมศาสตร์ KMITL</p>
-                            <a href="{{ route('teacher.dashboard') }}" class="btn btn-default btn-md pull-right" role="button">Dashboard</a>
+                            <a href="{{ route('teacher.tsClass','E12-704') }}" class="btn btn-default btn-md pull-right" role="button">Create Class</a>
+                            <a href="{{ route('teacher.tscalendar','E12-704') }}" class="btn btn-default btn-md pull-right" role="button">Reserve</a>
                         </div>
                     </div>
                 </div>
@@ -43,13 +44,14 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">C113</div>
+                            <div class="large">C-103</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
                             <h4><a href="#">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคารพระเทพฯ ชั้น1 คณะวิศวกรรมศาสตร์ KMITL</p>
-
+                            <a href="{{ route('teacher.tsClass','C-113') }}" class="btn btn-default btn-md pull-right" role="button">Create Class</a>
+                            <a href="{{ route('teacher.tscalendar','C103') }}" class="btn btn-default btn-md pull-right" role="button">Reserve</a>
                         </div>
                     </div>
                 </div>
@@ -60,13 +62,14 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="col-xs-3 col-md-3 date">
-                            <div class="large">E604</div>
+                            <div class="large">E12-604</div>
                             <div class="text-muted">Room Id</div>
                         </div>
                         <div class="col-xs-9 col-md-9">
                             <h4><a href="#">Reserve & Edit</a></h4>
                             <p>ที่ตั้ง: อาคาร12ชั้น ชั้น6 คณะวิศวกรรมศาสตร์ KMITL</p>
-
+                            <a href="{{ route('teacher.tsClass','E12-604') }}" class="btn btn-default btn-md pull-right" role="button">Create Class</a>
+                            <a href="{{ route('teacher.tscalendar','E12-604') }}" class="btn btn-default btn-md pull-right" role="button">Reserve</a>
                         </div>
                     </div>
                 </div>
